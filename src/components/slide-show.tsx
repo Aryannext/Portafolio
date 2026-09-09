@@ -167,8 +167,8 @@ const SlideShow = ({ images }: { images: string[] }) => {
       <Dialog open={isOpen} onOpenChange={(open) => !open && setSelectedIndex(null)}>
         <DialogContent className="max-w-[95vw] border-none bg-transparent p-0 shadow-none sm:max-w-[92vw] [&>button]:right-2 [&>button]:top-2 [&>button]:z-10 [&>button]:rounded-full [&>button]:border [&>button]:border-white/15 [&>button]:bg-black/50 [&>button]:p-2 [&>button]:text-white/90 [&>button]:opacity-100 [&>button]:backdrop-blur-md sm:[&>button]:right-3 sm:[&>button]:top-3">
           <DialogHeader className="sr-only">
-            <DialogTitle>Screenshot</DialogTitle>
-            <DialogDescription>Zoomed project screenshot</DialogDescription>
+            <DialogTitle>Captura del proyecto</DialogTitle>
+            <DialogDescription>Captura ampliada del proyecto</DialogDescription>
           </DialogHeader>
 
           <div

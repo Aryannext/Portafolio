@@ -1,10 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Empaqueta el servidor y solo las dependencias que realmente usa en
+  // .next/standalone. La imagen de Docker pasa de ~1.5 GB a ~200 MB porque no
+  // necesita llevar node_modules completo.
+  output: "standalone",
   reactStrictMode: true,
   cacheComponents: true,
-  eslint: {
-    ignoreDuringBuilds: true
-  },
   async headers() {
     return [
       {

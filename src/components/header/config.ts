@@ -2,27 +2,27 @@ import { Link } from "@/types";
 
 const links: Link[] = [
   {
-    title: 'Home',
+    title: 'Inicio',
     href: '/',
     thumbnail: '/assets/nav-link-previews/landing.png'
   },
   {
-    title: 'About',
+    title: 'Sobre mí',
     href: '/#about',
     thumbnail: '/assets/nav-link-previews/about.png'
   },
   {
-    title: 'Skills',
+    title: 'Habilidades',
     href: '/#skills',
     thumbnail: '/assets/nav-link-previews/skills.png'
   },
   {
-    title: 'Projects',
+    title: 'Proyectos',
     href: '/#projects',
     thumbnail: '/assets/nav-link-previews/projects.png'
   },
   // {
-  //   title: 'Skills',
+  //   title: 'Habilidades',
   //   href: '/skills',
   //   thumbnail: '/assets/nav-link-previews/skills.png'
   // },
@@ -32,12 +32,7 @@ const links: Link[] = [
   //   thumbnail: '/assets/nav-link-previews/testimonials.png'
   // },
   {
-    title: 'Blogs',
-    href: '/blogs',
-    thumbnail: '/assets/nav-link-previews/blog.png',
-  },
-  {
-    title: 'Contact',
+    title: 'Contacto',
     href: '/#contact',
     thumbnail: '/assets/nav-link-previews/contact.png'
   }

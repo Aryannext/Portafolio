@@ -4,7 +4,12 @@ import { Application, SPEObject, SplineEvent } from "@splinetool/runtime";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 const Spline = React.lazy(() => import("@splinetool/react-spline"));
-import { Skill, SkillNames, SKILLS } from "@/data/constants";
+import {
+  esMiSkill,
+  Skill,
+  SkillNames,
+  SKILLS,
+} from "@/data/constants";
 import { sleep } from "@/lib/utils";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import { usePreloader } from "./preloader";
@@ -38,6 +43,8 @@ const KeyboardScene = ({ maxDpr }: { maxDpr: number }) => {
 
   const handleMouseHover = (e: SplineEvent) => {
     if (!splineApp || selectedSkillRef.current?.name === e.target.name) return;
+    // Las teclas apagadas no muestran nada: no son tecnologías de Cristian
+    if (e.target.name && !esMiSkill(e.target.name)) return;
 
     if (e.target.name === "body" || e.target.name === "platform") {
       if (selectedSkillRef.current) playReleaseSound();
@@ -82,7 +89,7 @@ const KeyboardScene = ({ maxDpr }: { maxDpr: number }) => {
     splineApp.addEventListener("keyDown", (e) => {
       if (!splineApp || isInputFocused()) return;
       const skill = SKILLS[e.target.name as SkillNames];
-      if (skill) {
+      if (skill && esMiSkill(e.target.name)) {
         playPressSound();
         setSelectedSkill(skill);
         selectedSkillRef.current = skill;
@@ -287,9 +294,35 @@ const KeyboardScene = ({ maxDpr }: { maxDpr: number }) => {
   // --- Effects ---
 
   // Initialize GSAP and Spline interactions
+  // Apaga las teclas que no corresponden a tecnologías de Cristian.
+  // El runtime de Spline permite cambiar el color del material de un objeto,
+  // así que no hace falta editar la escena para esto: la tecla sigue ahí,
+  // pero en gris oscuro y sin reaccionar.
+  /**
+   * Oculta las teclas que no corresponden a tecnologías de Cristian.
+   *
+   * Se usa `visible` y no `color` porque cada keycap de la escena es un GRUPO
+   * (contiene la malla del cuerpo, el logo y sus estados), y el runtime de
+   * Spline solo aplica color "if it is a mesh and if it has a color layer".
+   * En un grupo, asignar color no hace nada — de ahí que el primer intento
+   * dejara las teclas igual.
+   *
+   * Al ocultarlas queda visible la base oscura del teclado: un hueco apagado,
+   * listo por si más adelante se agrega esa tecnología en Spline.
+   */
+  const apagarTeclasAjenas = () => {
+    if (!splineApp) return;
+    for (const nombre of Object.values(SkillNames)) {
+      if (esMiSkill(nombre)) continue;
+      const obj = splineApp.findObjectByName(nombre);
+      if (obj) obj.visible = false;
+    }
+  };
+
   useEffect(() => {
     if (!splineApp) return;
     handleSplineInteractions();
+    apagarTeclasAjenas();
     const timelines = setupScrollAnimations();
     bongoAnimationRef.current = getBongoAnimation();
     keycapAnimationsRef.current = getKeycapsAnimation();
@@ -480,7 +513,7 @@ const KeyboardScene = ({ maxDpr }: { maxDpr: number }) => {
   }, [splineApp]);
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div>Cargando…</div>}>
       <Spline
         className="w-full h-full fixed"
         ref={splineContainer}

@@ -20,14 +20,14 @@ export default function MotionToggle({ className }: { className?: string }) {
     <Button
       onClick={() => setMotionPreference(reducedMotion ? "on" : "off")}
       aria-pressed={reducedMotion}
-      aria-label={motionOn ? "Reduce motion and disable 3D" : "Enable motion and 3D"}
+      aria-label={motionOn ? "Reducir movimiento y desactivar 3D" : "Activar movimiento y 3D"}
       className={'bg-transparent gap-2 flex text-muted group hover:bg-transparent border-2 text-xs'}
       size={'sm'}
     >
       <Icon className="size-4 shrink-0 text-muted-foreground transition-colors group-hover:text-foreground" />
       <span className="flex flex-col leading-tight">
         <span className="text-xs font-medium text-foreground/70 transition-colors group-hover:text-foreground">
-          {motionOn ? "Reduce motion" : "Enable motion"}
+          {motionOn ? "Reducir movimiento" : "Activar movimiento"}
         </span>
         {/* <span className="text-[11px] text-muted-foreground/70"> */}
         {/* {motionOn ? "Turn off 3D & animations" : "Turn on 3D & animations"} */}

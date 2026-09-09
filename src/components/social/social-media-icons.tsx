@@ -3,13 +3,14 @@
 import { useInView } from "motion/react";
 import React, { useRef } from "react";
 import { Button } from "../ui/button";
-import { SiGithub, SiInstagram, SiLinkedin, SiX } from "react-icons/si";
+import { SiGithub, SiLinkedin } from "react-icons/si";
+import { Mail } from "lucide-react";
 import { config } from "@/data/config";
 import Link from "next/link";
 
 const BUTTONS = [
   {
-    name: "Github",
+    name: "GitHub",
     href: config.social.github,
     icon: <SiGithub size={"24"} color={"#fff"} />,
   },
@@ -19,14 +20,9 @@ const BUTTONS = [
     icon: <SiLinkedin size={"24"} color={"#fff"} />,
   },
   {
-    name: "Twitter",
-    href: config.social.twitter,
-    icon: <SiX size={"24"} color={"#fff"} />,
-  },
-  {
-    name: "Instagram",
-    href: config.social.instagram,
-    icon: <SiInstagram size={"24"} color={"#fff"} />,
+    name: "Correo",
+    href: `mailto:${config.email}`,
+    icon: <Mail size={24} color={"#fff"} />,
   },
 ];
 

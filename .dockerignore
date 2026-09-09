@@ -1,0 +1,20 @@
+# Lo que NO debe entrar a la imagen
+node_modules
+.next
+.git
+.github
+.env
+.env.local
+.env.*.local
+*.log
+npm-debug.log*
+yarn-error.log*
+
+# Documentación y respaldos
+README.original.md
+*.bak
+public/assets/*.spline.bak
+
+# Artefactos locales
+.DS_Store
+Thumbs.db

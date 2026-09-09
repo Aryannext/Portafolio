@@ -43,7 +43,7 @@ export function RightClickHint({ dismissed }: { dismissed: boolean }) {
             className="fixed top-16 left-1/2 z-[50] pointer-events-none"
           >
             <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-neutral-900/80 backdrop-blur-md border border-white/10 shadow-lg">
-              <span className="text-sm text-white/70">Right-click anywhere to react</span>
+              <span className="text-sm text-white/70">Clic derecho en cualquier parte para reaccionar</span>
               <span className="text-xs text-white/40">✨</span>
             </div>
           </motion.div>

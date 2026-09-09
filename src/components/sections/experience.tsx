@@ -14,7 +14,7 @@ const ExperienceSection = () => {
       <div className="w-full max-w-4xl px-4 md:px-8 mx-auto">
         <SectionHeader
           id="experience"
-          title="Experience"
+          title="Formación"
           desc="My professional journey."
           className="mb-12 md:mb-20 mt-0"
         />

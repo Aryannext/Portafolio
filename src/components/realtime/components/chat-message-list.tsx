@@ -176,7 +176,7 @@ export const ChatMessageList = ({
                 {loadingHistory ? (
                   <>
                     <Loader2 className="w-3 h-3 animate-spin" />
-                    Loading...
+                    Cargando…
                   </>
                 ) : (
                   "Load older messages"
@@ -443,7 +443,7 @@ export const ChatMessageList = ({
               </>
             ) : (
               <>
-                <span>Jump to present</span>
+                <span>Ir al final</span>
                 <ArrowDown className="w-3 h-3" />
               </>
             )}

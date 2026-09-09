@@ -39,3 +39,6 @@ src/app/(components)
 
 # raw screenshot dump — source images; optimized versions live in each project dir
 public/assets/projects-screenshots/raw/
+
+# Respaldos locales de las escenas 3D (hay copia externa en ../respaldos/)
+*.bak

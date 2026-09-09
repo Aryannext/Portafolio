@@ -1,9 +1,9 @@
 import ResumeView from "./resume-view";
 
 export const metadata = {
-  title: "Résumé | Naresh Khatri",
+  title: "Hoja de vida | Cristian Cantillo Mejía",
   description:
-    "Résumé of Naresh Khatri — Senior Full-Stack Engineer. View online or download the PDF.",
+    "Hoja de vida de Cristian Cantillo Mejía — Desarrollador de Software. Puedes verla en línea o descargar el PDF.",
 };
 
 export default function ResumePage() {

@@ -28,7 +28,7 @@ const SkillsSection = () => {
       >
         <SectionHeader
           id="skills"
-          title="Tech Stack"
+          title="Habilidades"
           desc="Tools I build with"
           className="static mb-14"
         />
@@ -79,7 +79,7 @@ const SkillsSection = () => {
       id="skills"
       className="w-full h-screen md:h-[150dvh] pointer-events-none"
     >
-      <SectionHeader id="skills" title="Tech Stack" desc="(hint: press a key)" />
+      <SectionHeader id="skills" title="Habilidades" desc="(pista: presiona una tecla)" />
     </SectionWrapper>
   );
 };

@@ -85,7 +85,11 @@ export default function RootLayout({
           />
         )}
       </head>
-      <body>
+      {/* Las extensiones del navegador (Bitdefender, gestores de contraseñas,
+          traductores…) inyectan atributos en <body> antes de que React hidrate,
+          lo que dispara un aviso de hidratación que no viene del código.
+          Esto lo silencia para <body>, igual que ya se hace en <html>. */}
+      <body suppressHydrationWarning>
         <Providers>
           <SiteFrame>{children}</SiteFrame>
         </Providers>

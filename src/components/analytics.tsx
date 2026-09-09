@@ -1,33 +1,20 @@
 "use client";
 
-import * as React from "react";
-
-const ENDPOINT = "https://nareshkhatri.dev/api/collect";
-const KEY = "portfolio:site";
-
-const isLocal = (h: string) =>
-  h === "localhost" ||
-  h === "127.0.0.1" ||
-  h === "nareshkhatri.dev" ||
-  h.endsWith(".nareshkhatri.dev");
-
-// records the deployment hostname once per browser, so I know where builds run.
+/**
+ * Telemetría desactivada.
+ *
+ * La versión original de este componente enviaba el dominio del despliegue al
+ * servidor del autor de la plantilla (`https://nareshkhatri.dev/api/collect`)
+ * mediante `navigator.sendBeacon`, con el comentario "so I know where builds run".
+ *
+ * Se eliminó esa llamada: es telemetría hacia un tercero que ocurre en el
+ * navegador de quien visita este sitio, y no fue una decisión de su dueño.
+ * Además solo se disparaba cuando el dominio NO era localhost ni el del autor,
+ * es decir, precisamente en producción.
+ *
+ * El componente se conserva como no-op para no romper el árbol de imports.
+ * Si algún día quieres analítica propia, este es el lugar donde ponerla.
+ */
 export default function Analytics() {
-  React.useEffect(() => {
-    const host = window.location.hostname;
-    if (isLocal(host)) return;
-
-    try {
-      if (localStorage.getItem(KEY) === host) return;
-      localStorage.setItem(KEY, host);
-    } catch {
-      /* private mode */
-    }
-
-    // text/plain -> simple request, no preflight
-    const body = new Blob([JSON.stringify({ host })], { type: "text/plain" });
-    navigator.sendBeacon?.(ENDPOINT, body);
-  }, []);
-
   return null;
 }

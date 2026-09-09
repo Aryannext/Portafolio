@@ -202,7 +202,7 @@ export const ChatInput = ({ onSendMessage, onTyping, placeholder = "Message", re
           "flex items-center gap-2 px-3 py-2 rounded-t-lg text-xs font-medium",
           "bg-[#5865f2]/10 text-[#5865f2] dark:text-[#8891f2]",
         )}>
-          <span>Editing message</span>
+          <span>Editando mensaje</span>
           <span className={cn("ml-auto text-[10px]", THEME.text.secondary)}>
             Esc to cancel
           </span>

@@ -68,7 +68,7 @@ const Header = ({ loader }: HeaderProps) => {
         <Button
           variant={"ghost"}
           onClick={() => setIsActive(!isActive)}
-          aria-label={isActive ? "Close menu" : "Open menu"}
+          aria-label={isActive ? "Cerrar menú" : "Abrir menú"}
           aria-expanded={isActive}
           className={cn(
             styles.el,
@@ -80,10 +80,10 @@ const Header = ({ loader }: HeaderProps) => {
               variants={opacity}
               animate={!isActive ? "open" : "closed"}
             >
-              Menu
+              Menú
             </motion.p>
             <motion.p variants={opacity} animate={isActive ? "open" : "closed"}>
-              Close
+              Cerrar
             </motion.p>
           </div>
           <div
