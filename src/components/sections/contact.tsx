@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/card";
 import ContactForm from "../ContactForm";
 import { config } from "@/data/config";
+import EnlaceCorreo from "../enlace-correo";
 import { SectionHeader } from "./section-header";
 import SectionWrapper from "../ui/section-wrapper";
 
@@ -26,13 +27,9 @@ const ContactSection = () => {
             <CardTitle className="text-4xl">Escríbeme</CardTitle>
             <CardDescription>
               Escríbeme directo a{" "}
-              <a
-                target="_blank"
-                href={`mailto:${config.email}`}
-                className="text-gray-200 cursor-can-hover rounded-lg"
-              >
+              <EnlaceCorreo className="text-gray-200 cursor-can-hover rounded-lg">
                 {config.email.replace(/@/g, "(at)")}
-              </a>{" "}
+              </EnlaceCorreo>{" "}
               o déjame tus datos aquí.
             </CardDescription>
           </CardHeader>

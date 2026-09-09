@@ -15,6 +15,7 @@ import { SiGithub, SiLinkedin } from "react-icons/si";
 import { config } from "@/data/config";
 
 import SectionWrapper from "../ui/section-wrapper";
+import EnlaceCorreo from "../enlace-correo";
 
 const HeroSection = () => {
   const { isLoading } = usePreloader();
@@ -111,15 +112,14 @@ const HeroSection = () => {
                     </TooltipContent>
                   </Tooltip>
                   <div className="flex items-center h-full gap-2">
-                    <Link
-                      href={`mailto:${config.email}`}
+                    <EnlaceCorreo
                       className="cursor-can-hover"
-                      aria-label="Escribir un correo"
+                      ariaLabel="Escribir un correo"
                     >
                       <Button variant={"outline"}>
                         <Mail size={24} />
                       </Button>
-                    </Link>
+                    </EnlaceCorreo>
                     <Link
                       href={config.social.github}
                       target="_blank"
