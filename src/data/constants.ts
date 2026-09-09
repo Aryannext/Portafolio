@@ -59,7 +59,6 @@ export const MIS_SKILLS: SkillNames[] = [
   SkillNames.NGINX,
   SkillNames.NPM,
   SkillNames.EXPRESS,
-  SkillNames.AWS,
 ];
 
 /** Color de las teclas apagadas. */
@@ -246,7 +245,7 @@ export const SKILLS: Record<SkillNames, Skill> = {
     name: "aws",
     label: "AWS",
     shortDescription:
-      "S3 para guardar los archivos del Sistema Jurídico.",
+      "Todavía no lo uso: el almacenamiento de mis proyectos va en Cloudflare.",
     color: "#ff9900",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/aws/aws-original.svg",
   },

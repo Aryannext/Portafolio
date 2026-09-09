@@ -8,7 +8,7 @@ import Link from "next/link";
 import { ReactNode } from "react";
 // Spline has no thesvg entry — keep the Three.js mark as its stand-in.
 import {
-  SiAmazonwebservices,
+  SiCloudflare,
   SiAndroid,
   SiCapacitor,
   SiGit,
@@ -218,7 +218,7 @@ const SKILLS = {
   git: iconoReact("Git", SiGit),
   vite: iconoReact("Vite", SiVite),
   nginx: iconoReact("Nginx", SiNginx),
-  aws: iconoReact("AWS S3", SiAmazonwebservices),
+  cloudflare: iconoReact("Cloudflare R2", SiCloudflare),
   jwt: iconoReact("JWT", SiJsonwebtokens),
   github: iconoReact("GitHub Actions", SiGithubactions),
 };
@@ -259,7 +259,7 @@ const projects: Project[] = [
         SKILLS.postgres,
         SKILLS.prisma,
         SKILLS.jwt,
-        SKILLS.aws,
+        SKILLS.cloudflare,
         SKILLS.docker,
         SKILLS.nginx,
       ],
@@ -290,8 +290,8 @@ const projects: Project[] = [
 
           <TypographyH3 className="my-4 mt-8">Archivos y correos</TypographyH3>
           <p className="font-mono mb-2">
-            Los documentos de cada expediente se guardan en S3 con el SDK de AWS,
-            no en el disco del servidor. Los PDFs se generan con PDFKit y las
+            Los documentos de cada expediente se guardan en Cloudflare R2, no en
+            el disco del servidor. Los PDFs se generan con PDFKit y las
             notificaciones salen por Nodemailer.
           </p>
 

@@ -32,7 +32,7 @@ No es la plantilla con otro nombre. Lo que hice:
   de pantalla.
 
 **El teclado 3D**
-- La escena de Spline trae 24 tecnologías. Solo se muestran las **17 que manejo**;
+- La escena de Spline trae 24 tecnologías. Solo se muestran las **16 que manejo**;
   las demás quedan ocultas e inertes, sin responder al cursor ni al teclado.
 - Esto se resuelve desde el código con `visible` del runtime de Spline. No se
   puede con `color`, porque cada keycap es un grupo y no una malla.
@@ -55,7 +55,7 @@ No es la plantilla con otro nombre. Lo que hice:
 
 | Proyecto | Qué es | Stack |
 |---|---|---|
-| [Sistema Jurídico](https://proyectosena.online/sistema-juridico) | Gestión de casos legales y expedientes | React 19, Vite, Tailwind · Node 22, Express, PostgreSQL 16 + Prisma, JWT, S3 · Docker, Nginx |
+| [Sistema Jurídico](https://proyectosena.online/sistema-juridico) | Gestión de casos legales y expedientes | React 19, Vite, Tailwind · Node 22, Express, PostgreSQL 16 + Prisma, JWT, Cloudflare R2 · Docker, Nginx |
 | [Costura App](https://proyectosena.online/costura) | Pedidos y medidas para un taller, en móvil y web | Vue 3, Vite · Capacitor 8, SQLite nativo, Android |
 | [Sincronización Web / App nativa](https://github.com/Aryannext/Sincronizaci-n-Web---app-Nativa) | Sincronización offline-first entre app nativa y web | React 19 · Express 5, PostgreSQL · Kotlin, Room, WorkManager |
 

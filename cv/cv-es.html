@@ -44,16 +44,12 @@
     border-bottom: 2px solid var(--tinta);
   }
 
-  /* Las iniciales hacen las veces de foto mientras no haya una. Para ponerla,
-     se reemplaza este bloque por un <img> del mismo tamaño. */
-  .iniciales {
+  .foto {
     flex: 0 0 auto;
-    width: 20mm; height: 20mm;
+    width: 22mm; height: 22mm;
     border-radius: 50%;
-    background: var(--tinta);
-    color: #fff;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 15pt; font-weight: 600; letter-spacing: 0.5pt;
+    object-fit: cover;
+    /* El recorte ya viene cuadrado y centrado en la cara desde cv/foto.jpg */
   }
 
   .nombre {
@@ -151,7 +147,7 @@
 <div class="hoja">
 
   <header class="encabezado">
-    <div class="iniciales">CM</div>
+    <img class="foto" src="foto.jpg" alt="Cristian Cantillo Mejía">
     <div>
       <div class="nombre">Cristian Cantillo Mejía</div>
       <div class="rol">Desarrollador de Software</div>
@@ -202,10 +198,10 @@
       </div>
       <ul>
         <li>Autenticación con JWT y contraseñas cifradas con bcrypt; la API va detrás de Helmet, CORS y limitación de peticiones.</li>
-        <li>Los documentos de cada expediente se guardan en Amazon S3, no en el disco del servidor; los PDF se generan con PDFKit.</li>
+        <li>Los documentos de cada expediente se guardan en Cloudflare R2, no en el disco del servidor; los PDF se generan con PDFKit.</li>
         <li>Desplegado con Docker Compose —incluido su propio contenedor de PostgreSQL— y servido por Nginx. Pruebas con Jest, Supertest y Cypress.</li>
       </ul>
-      <div class="pila"><b>Stack:</b> React 19 · Vite · Tailwind · shadcn/ui · Node 22 · Express · PostgreSQL 16 · Prisma · JWT · AWS S3 · Docker · Nginx</div>
+      <div class="pila"><b>Stack:</b> React 19 · Vite · Tailwind · shadcn/ui · Node 22 · Express · PostgreSQL 16 · Prisma · JWT · Cloudflare R2 · Docker · Nginx</div>
     </div>
 
     <div class="entrada">
@@ -259,7 +255,7 @@
       </div>
       <div class="grupo">
         <span class="etiqueta">Infraestructura</span>
-        <span class="lista">Linux · Docker · Nginx · AWS S3 · npm · administración de VPS</span>
+        <span class="lista">Linux · Docker · Nginx · Cloudflare R2 · npm · administración de VPS</span>
       </div>
       <div class="grupo">
         <span class="etiqueta">Herramientas</span>
