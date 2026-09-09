@@ -86,7 +86,7 @@ export const SKILLS: Record<SkillNames, Skill> = {
     label: "JavaScript",
     shortDescription: "Donde todo empezó para mí.",
     color: "#f0db4f",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+    icon: "/assets/logos-skills/javascript-original.svg",
   },
   [SkillNames.PHP]: {
     id: 2,
@@ -94,7 +94,7 @@ export const SKILLS: Record<SkillNames, Skill> = {
     label: "PHP",
     shortDescription: "Con lo que aprendí a montar un servidor que devuelve páginas.",
     color: "#777bb4",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg",
+    icon: "/assets/logos-skills/php-original.svg",
   },
   [SkillNames.HTML]: {
     id: 3,
@@ -102,7 +102,7 @@ export const SKILLS: Record<SkillNames, Skill> = {
     label: "HTML",
     shortDescription: "Los cimientos. Sin esto no hay nada.",
     color: "#e34c26",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+    icon: "/assets/logos-skills/html5-original.svg",
   },
   [SkillNames.CSS]: {
     id: 4,
@@ -110,7 +110,7 @@ export const SKILLS: Record<SkillNames, Skill> = {
     label: "CSS",
     shortDescription: "Donde el diseño por fin se vuelve real.",
     color: "#563d7c",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
+    icon: "/assets/logos-skills/css3-original.svg",
   },
   [SkillNames.REACT]: {
     id: 5,
@@ -118,7 +118,7 @@ export const SKILLS: Record<SkillNames, Skill> = {
     label: "React",
     shortDescription: "Con esto está hecho este portafolio.",
     color: "#61dafb",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+    icon: "/assets/logos-skills/react-original.svg",
   },
   [SkillNames.VUE]: {
     id: 6,
@@ -127,7 +127,7 @@ export const SKILLS: Record<SkillNames, Skill> = {
     shortDescription:
       "Con esto construí Costura App.",
     color: "#41b883",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg",
+    icon: "/assets/logos-skills/vuejs-original.svg",
   },
   [SkillNames.NEXTJS]: {
     id: 7,
@@ -136,7 +136,7 @@ export const SKILLS: Record<SkillNames, Skill> = {
     shortDescription:
       "React con las pilas puestas: rutas, servidor y build en uno.",
     color: "#fff",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+    icon: "/assets/logos-skills/nextjs-original.svg",
   },
   [SkillNames.TAILWIND]: {
     id: 8,
@@ -144,7 +144,7 @@ export const SKILLS: Record<SkillNames, Skill> = {
     label: "Tailwind",
     shortDescription: "Estilos sin salir del HTML. Se vuelve rápido cuando le agarras el ritmo.",
     color: "#38bdf8",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg",
+    icon: "/assets/logos-skills/tailwindcss-original.svg",
   },
   [SkillNames.NODEJS]: {
     id: 9,
@@ -152,7 +152,7 @@ export const SKILLS: Record<SkillNames, Skill> = {
     label: "Node.js",
     shortDescription: "JavaScript también del lado del servidor.",
     color: "#6cc24a",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+    icon: "/assets/logos-skills/nodejs-original.svg",
   },
   [SkillNames.EXPRESS]: {
     id: 10,
@@ -160,7 +160,7 @@ export const SKILLS: Record<SkillNames, Skill> = {
     label: "Express",
     shortDescription: "La API del Sistema Jurídico y del proyecto de sincronización.",
     color: "#fff",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
+    icon: "/assets/logos-skills/express-original.svg",
   },
   [SkillNames.POSTGRES]: {
     id: 11,
@@ -168,7 +168,7 @@ export const SKILLS: Record<SkillNames, Skill> = {
     label: "PostgreSQL",
     shortDescription: "Cuando el proyecto empieza a crecer en serio.",
     color: "#336791",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+    icon: "/assets/logos-skills/postgresql-original.svg",
   },
   [SkillNames.ANDROID]: {
     id: 12,
@@ -176,7 +176,7 @@ export const SKILLS: Record<SkillNames, Skill> = {
     label: "Android",
     shortDescription: "Publiqué en Android la app del taller de costura y la app nativa.",
     color: "#3ddc84",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/android/android-original.svg",
+    icon: "/assets/logos-skills/android-original.svg",
   },
   [SkillNames.GIT]: {
     id: 13,
@@ -184,7 +184,7 @@ export const SKILLS: Record<SkillNames, Skill> = {
     label: "Git",
     shortDescription: "Mi máquina del tiempo. Me ha salvado varias veces.",
     color: "#f1502f",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
+    icon: "/assets/logos-skills/git-original.svg",
   },
   [SkillNames.GITHUB]: {
     id: 14,
@@ -192,7 +192,7 @@ export const SKILLS: Record<SkillNames, Skill> = {
     label: "GitHub",
     shortDescription: "Ahí vive todo lo que he construido.",
     color: "#000000",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
+    icon: "/assets/logos-skills/github-original.svg",
   },
   [SkillNames.CAPACITOR]: {
     id: 15,
@@ -200,7 +200,7 @@ export const SKILLS: Record<SkillNames, Skill> = {
     label: "Capacitor",
     shortDescription: "Con esto la Costura App pasó de web a aplicación de Android.",
     color: "#119eff",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/capacitor/capacitor-original.svg",
+    icon: "/assets/logos-skills/capacitor-original.svg",
   },
   [SkillNames.NPM]: {
     id: 16,
@@ -208,7 +208,7 @@ export const SKILLS: Record<SkillNames, Skill> = {
     label: "NPM",
     shortDescription: "Una línea y ya tienes medio internet instalado. Para bien y para mal.",
     color: "#fff",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/npm/npm-original-wordmark.svg",
+    icon: "/assets/logos-skills/npm-original-wordmark.svg",
   },
   [SkillNames.VITE]: {
     id: 17,
@@ -216,7 +216,7 @@ export const SKILLS: Record<SkillNames, Skill> = {
     label: "Vite",
     shortDescription: "El empaquetador de mis tres proyectos. Recarga al instante.",
     color: "#646cff",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg",
+    icon: "/assets/logos-skills/vitejs-original.svg",
   },
   [SkillNames.SQLITE]: {
     id: 18,
@@ -224,7 +224,7 @@ export const SKILLS: Record<SkillNames, Skill> = {
     label: "SQLite",
     shortDescription: "La base que vive dentro del celular y funciona sin internet.",
     color: "#003b57",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg",
+    icon: "/assets/logos-skills/sqlite-original.svg",
   },
   [SkillNames.LINUX]: {
     id: 19,
@@ -232,7 +232,7 @@ export const SKILLS: Record<SkillNames, Skill> = {
     label: "Linux",
     shortDescription: "Donde vive el pingüino. Y donde corre todo.",
     color: "#fff",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg",
+    icon: "/assets/logos-skills/linux-original.svg",
   },
   [SkillNames.DOCKER]: {
     id: 20,
@@ -240,7 +240,7 @@ export const SKILLS: Record<SkillNames, Skill> = {
     label: "Docker",
     shortDescription: "Funciona en mi máquina, y ahora también en la tuya.",
     color: "#2496ed",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
+    icon: "/assets/logos-skills/docker-original.svg",
   },
   [SkillNames.NGINX]: {
     id: 21,
@@ -248,7 +248,7 @@ export const SKILLS: Record<SkillNames, Skill> = {
     label: "NginX",
     shortDescription: "El portero de mi VPS: reparte el tráfico y sirve los proyectos.",
     color: "#008000",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nginx/nginx-original.svg",
+    icon: "/assets/logos-skills/nginx-original.svg",
   },
   [SkillNames.CLOUDFLARE]: {
     id: 22,
@@ -256,7 +256,7 @@ export const SKILLS: Record<SkillNames, Skill> = {
     label: "Cloudflare",
     shortDescription: "Ahí guardo los documentos de los expedientes del Sistema Jurídico.",
     color: "#f38020",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cloudflare/cloudflare-original.svg",
+    icon: "/assets/logos-skills/cloudflare-original.svg",
   },
   [SkillNames.GCP]: {
     id: 25,
@@ -265,7 +265,7 @@ export const SKILLS: Record<SkillNames, Skill> = {
     shortDescription:
       "La otra nube grande.",
     color: "#4285f4",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg",
+    icon: "/assets/logos-skills/googlecloud-original.svg",
   },
   [SkillNames.KOTLIN]: {
     id: 23,
@@ -273,7 +273,7 @@ export const SKILLS: Record<SkillNames, Skill> = {
     label: "Kotlin",
     shortDescription: "La app nativa de Android que sincroniza con la plataforma web.",
     color: "#7f52ff",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg",
+    icon: "/assets/logos-skills/kotlin-original.svg",
   },
   [SkillNames.PRISMA]: {
     id: 24,
@@ -281,7 +281,7 @@ export const SKILLS: Record<SkillNames, Skill> = {
     label: "Prisma",
     shortDescription: "El ORM con el que hablo con PostgreSQL en el Sistema Jurídico.",
     color: "#2d3748",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prisma/prisma-original.svg",
+    icon: "/assets/logos-skills/prisma-original.svg",
   },
 };
 

@@ -47,4 +47,9 @@ ocurrían en el navegador de quien visitara el sitio. Se eliminaron.
 ## Otros recursos
 
 - **[simple-icons](https://github.com/simple-icons/simple-icons)** — logos de marcas (CC0)
+- **[devicon](https://github.com/devicons/devicon)** — logos de las tecnologías, en
+  `public/assets/logos-skills/` (MIT). Están copiados dentro del proyecto a
+  propósito, no enlazados a su CDN: cuando devicon renombró el archivo de
+  Tailwind, el icono se rompió en el sitio sin avisar. Las marcas siguen siendo
+  de sus dueños
 - **[Spline](https://spline.design)** — herramienta con la que está modelado el teclado
