@@ -32,12 +32,19 @@ No es la plantilla con otro nombre. Lo que hice:
   de pantalla.
 
 **El teclado 3D**
-- La escena de Spline trae 24 tecnologías. Solo se muestran las **16 que manejo**;
-  las demás quedan ocultas e inertes, sin responder al cursor ni al teclado.
-- Esto se resuelve desde el código con `visible` del runtime de Spline. No se
-  puede con `color`, porque cada keycap es un grupo y no una malla.
+- La escena de Spline trae 24 tecnologías horneadas en el archivo, y no se pueden
+  crear teclas nuevas sin abrir el editor de Spline. Siete de esas 24 no las uso,
+  así que **se reaprovecharon**: se les cambió el logo dentro del propio archivo
+  y ahora son Vite, Prisma, SQLite, Capacitor, Android, Kotlin y Cloudflare. El
+  cómo está en [teclado-3d/](./teclado-3d/).
+- Quedan 23 tecnologías encendidas y solo TypeScript apagado. Las apagadas no
+  responden al cursor ni al teclado: se ocultan con `visible` del runtime. No
+  sirve `color`, porque cada keycap es un grupo y no una malla.
 - Las descripciones de cada tecnología están reescritas en español, contando para
   qué la uso de verdad.
+- El color de cada tecla sí está horneado y no se puede cambiar desde código; las
+  siete reaprovechadas se emparejaron buscando que el color no chocara con la
+  marca nueva.
 
 **Correcciones sobre la plantilla**
 - Se **desactivó la telemetría**: un componente enviaba el dominio del despliegue

@@ -24,7 +24,7 @@ Este archivo y el enlace en el pie de página del sitio son ese crédito.
 
 ### Qué se conserva de la base
 
-- La escena 3D del teclado (`public/assets/skills-keyboard.spline`), modelada en Spline
+- La escena 3D del teclado (`public/assets/skills-keyboard-v2.spline`), modelada en Spline
 - La arquitectura Next.js, los componentes de interfaz y los patrones de animación
 - Los sonidos de teclas y los fondos
 

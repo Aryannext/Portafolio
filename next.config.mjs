@@ -19,14 +19,12 @@ const nextConfig = {
           { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
         ],
       },
+      // Nada de Cache-Control propio para /_next/static: Next ya lo sirve con
+      // el suyo y sus nombres llevan hash. El que había (immutable, un año)
+      // hacía que en desarrollo el navegador se quedara pegado a chunks
+      // viejos; el propio Next avisa de esto al arrancar.
       {
         source: "/assets/(.*)",
-        headers: [
-          { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
-        ],
-      },
-      {
-        source: "/_next/static/(.*)",
         headers: [
           { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
         ],

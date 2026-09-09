@@ -553,7 +553,11 @@ const KeyboardScene = ({ maxDpr }: { maxDpr: number }) => {
           setSplineApp(app);
           bypassLoading();
         }}
-        scene="/assets/skills-keyboard.spline"
+        // El nombre lleva versión a propósito: /assets/* se sirve con
+        // Cache-Control immutable a un año, así que cambiar el contenido sin
+        // cambiar el nombre dejaría a los visitantes que ya entraron con el
+        // teclado viejo hasta 2027.
+        scene="/assets/skills-keyboard-v2.spline"
       />
     </Suspense>
   );

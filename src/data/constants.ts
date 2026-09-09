@@ -11,20 +11,24 @@ export enum SkillNames {
   NODEJS = "nodejs",
   EXPRESS = "express",
   POSTGRES = "postgres",
-  MONGODB = "mongodb",
+  // Teclas reaprovechadas. El valor es el nombre del objeto DENTRO de la escena
+  // 3D, que sigue siendo el de la tecnología que traía la plantilla; el logo
+  // que se ve y la etiqueta ya son otros (ver cv/logos-teclado y el README).
+  // Cambiarlo aquí no renombra nada en el archivo .spline.
+  ANDROID = "mongodb",
   GIT = "git",
   GITHUB = "github",
-  PRETTIER = "prettier",
+  CAPACITOR = "prettier",
   NPM = "npm",
-  FIREBASE = "firebase",
-  WORDPRESS = "wordpress",
+  VITE = "firebase",
+  SQLITE = "wordpress",
   LINUX = "linux",
   DOCKER = "docker",
   NGINX = "nginx",
-  AWS = "aws",
+  CLOUDFLARE = "aws",
   GCP = "gcp",
-  VIM = "vim",
-  VERCEL = "vercel",
+  KOTLIN = "vim",
+  PRISMA = "vercel",
 }
 export type Skill = {
   id: number;
@@ -59,6 +63,13 @@ export const MIS_SKILLS: SkillNames[] = [
   SkillNames.NGINX,
   SkillNames.NPM,
   SkillNames.EXPRESS,
+  SkillNames.VITE,
+  SkillNames.PRISMA,
+  SkillNames.SQLITE,
+  SkillNames.CAPACITOR,
+  SkillNames.ANDROID,
+  SkillNames.KOTLIN,
+  SkillNames.CLOUDFLARE,
 ];
 
 /** Color de las teclas apagadas. */
@@ -159,13 +170,13 @@ export const SKILLS: Record<SkillNames, Skill> = {
     color: "#336791",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
   },
-  [SkillNames.MONGODB]: {
+  [SkillNames.ANDROID]: {
     id: 12,
     name: "mongodb",
-    label: "MongoDB",
-    shortDescription: "Datos sin esquema fijo, para cuando aún no sabes la forma.",
-    color: "#336791",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+    label: "Android",
+    shortDescription: "Publiqué en Android la app del taller de costura y la app nativa.",
+    color: "#3ddc84",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/android/android-original.svg",
   },
   [SkillNames.GIT]: {
     id: 13,
@@ -183,13 +194,13 @@ export const SKILLS: Record<SkillNames, Skill> = {
     color: "#000000",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
   },
-  [SkillNames.PRETTIER]: {
+  [SkillNames.CAPACITOR]: {
     id: 15,
     name: "prettier",
-    label: "Prettier",
-    shortDescription: "El que acaba las discusiones sobre formato.",
-    color: "#f7b93a",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prettier/prettier-original.svg",
+    label: "Capacitor",
+    shortDescription: "Con esto la Costura App pasó de web a aplicación de Android.",
+    color: "#119eff",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/capacitor/capacitor-original.svg",
   },
   [SkillNames.NPM]: {
     id: 16,
@@ -199,22 +210,21 @@ export const SKILLS: Record<SkillNames, Skill> = {
     color: "#fff",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/npm/npm-original-wordmark.svg",
   },
-  [SkillNames.FIREBASE]: {
+  [SkillNames.VITE]: {
     id: 17,
     name: "firebase",
-    label: "Firebase",
-    shortDescription:
-      "Backend sin montar backend.",
-    color: "#ffca28",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg",
+    label: "Vite",
+    shortDescription: "El empaquetador de mis tres proyectos. Recarga al instante.",
+    color: "#646cff",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg",
   },
-  [SkillNames.WORDPRESS]: {
+  [SkillNames.SQLITE]: {
     id: 18,
     name: "wordpress",
-    label: "WordPress",
-    shortDescription: "Buena parte de la web sigue corriendo sobre esto.",
-    color: "#007acc",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg",
+    label: "SQLite",
+    shortDescription: "La base que vive dentro del celular y funciona sin internet.",
+    color: "#003b57",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg",
   },
   [SkillNames.LINUX]: {
     id: 19,
@@ -240,14 +250,13 @@ export const SKILLS: Record<SkillNames, Skill> = {
     color: "#008000",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nginx/nginx-original.svg",
   },
-  [SkillNames.AWS]: {
+  [SkillNames.CLOUDFLARE]: {
     id: 22,
     name: "aws",
-    label: "AWS",
-    shortDescription:
-      "Todavía no lo uso: el almacenamiento de mis proyectos va en Cloudflare.",
-    color: "#ff9900",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/aws/aws-original.svg",
+    label: "Cloudflare",
+    shortDescription: "Ahí guardo los documentos de los expedientes del Sistema Jurídico.",
+    color: "#f38020",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cloudflare/cloudflare-original.svg",
   },
   [SkillNames.GCP]: {
     id: 25,
@@ -258,22 +267,21 @@ export const SKILLS: Record<SkillNames, Skill> = {
     color: "#4285f4",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg",
   },
-  [SkillNames.VIM]: {
+  [SkillNames.KOTLIN]: {
     id: 23,
     name: "vim",
-    label: "Vim",
-    shortDescription: "Se entra fácil. Salir es otra historia.",
-    color: "#e34c26",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vim/vim-original.svg",
+    label: "Kotlin",
+    shortDescription: "La app nativa de Android que sincroniza con la plataforma web.",
+    color: "#7f52ff",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg",
   },
-  [SkillNames.VERCEL]: {
+  [SkillNames.PRISMA]: {
     id: 24,
     name: "vercel",
-    label: "Vercel",
-    shortDescription:
-      "Un push y ya está desplegado.",
-    color: "#6cc24a",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg",
+    label: "Prisma",
+    shortDescription: "El ORM con el que hablo con PostgreSQL en el Sistema Jurídico.",
+    color: "#2d3748",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prisma/prisma-original.svg",
   },
 };
 
