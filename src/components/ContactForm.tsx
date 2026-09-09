@@ -116,7 +116,7 @@ const ContactForm = () => {
         />
         {errors.message && <p className="text-sm text-red-500">{errors.message}</p>}
         <p className="text-sm text-muted-foreground">
-          I&apos;ll never share your data with anyone else. Pinky promise!
+          Tus datos no se los paso a nadie. Palabra.
         </p>
       </div>
       <Button
@@ -131,7 +131,7 @@ const ContactForm = () => {
           </div>
         ) : (
           <div className="flex items-center justify-center">
-            Send Message <ChevronRight className="w-4 h-4 ml-4" />
+            Enviar mensaje <ChevronRight className="w-4 h-4 ml-4" />
           </div>
         )}
         <BottomGradient />

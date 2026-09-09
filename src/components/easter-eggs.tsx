@@ -20,8 +20,8 @@ const EasterEggs = () => {
     if (typeof console !== "undefined") {
       console.clear();
       console.log(
-        "%cWhoa, look at you! 🕵️‍♂️\n" +
-          "You seem to have discovered the secret console! 🔍\n" +
+        "%c¡Vaya, mira nada más! 🕵️‍♂️\n" +
+          "Encontraste la consola secreta. 🔍\n" +
           "¿Quieres ver algo de magia? ✨\n" +
           "Escribe %cmi nombre%c y dale enter. 🎩🐇",
         //   "Just press the %c'n'%c key and watch the magic happen! 🪄",

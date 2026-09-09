@@ -24,7 +24,13 @@ const nextConfig = {
       // hacía que en desarrollo el navegador se quedara pegado a chunks
       // viejos; el propio Next avisa de esto al arrancar.
       {
-        source: "/assets/(.*)",
+        // Solo las escenas 3D. Pesan cientos de KB y su nombre lleva versión
+        // (skills-keyboard-v3), así que congelarlas un año es seguro.
+        //
+        // Antes la regla cubría todo /assets, y ahí caían también las capturas
+        // de los proyectos: cambiarle el contenido a una sin cambiarle el
+        // nombre habría dejado a quien ya entró viendo la vieja hasta 2027.
+        source: "/assets/(.*).spline",
         headers: [
           { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
         ],
