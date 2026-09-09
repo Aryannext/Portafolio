@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Cristian Cantillo Mejía — Hoja de vida</title>
+<style>
+  /* Fuente del PDF: se imprime con Chrome en Windows, donde Segoe UI siempre
+     está. El resto de la pila es por si algún día se genera en otra máquina. */
+  @page { size: A4; margin: 0; }
+
+  :root {
+    --tinta:   #14171c;
+    --suave:   #4a5058;
+    --tenue:   #767d87;
+    --linea:   #dfe3e8;
+    --acento:  #b8410f;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    width: 210mm;
+    font-family: "Segoe UI", "Inter", system-ui, -apple-system, sans-serif;
+    color: var(--tinta);
+    font-size: 9.2pt;
+    line-height: 1.36;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Sin min-height: 297mm. Con esa altura, el relleno inferior empujaba unos
+     milímetros más allá del alto de la A4 y Chrome imprimía una segunda hoja
+     en blanco. El tamaño de página ya lo fija @page. */
+  .hoja {
+    width: 210mm;
+    padding: 12mm 14mm 8mm;
+  }
+
+  /* ---------- Encabezado ---------- */
+  .encabezado {
+    display: flex;
+    align-items: center;
+    gap: 7mm;
+    padding-bottom: 3.6mm;
+    border-bottom: 2px solid var(--tinta);
+  }
+
+  /* Las iniciales hacen las veces de foto mientras no haya una. Para ponerla,
+     se reemplaza este bloque por un <img> del mismo tamaño. */
+  .iniciales {
+    flex: 0 0 auto;
+    width: 20mm; height: 20mm;
+    border-radius: 50%;
+    background: var(--tinta);
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15pt; font-weight: 600; letter-spacing: 0.5pt;
+  }
+
+  .nombre {
+    font-size: 21pt;
+    font-weight: 650;
+    letter-spacing: -0.35pt;
+    line-height: 1.1;
+  }
+  .rol {
+    font-size: 11pt;
+    color: var(--acento);
+    font-weight: 550;
+    margin-top: 0.8mm;
+  }
+  .contacto {
+    margin-top: 2.4mm;
+    font-size: 8.6pt;
+    color: var(--suave);
+    line-height: 1.55;
+  }
+  .contacto a { color: var(--suave); text-decoration: none; }
+  .sep { color: var(--linea); margin: 0 1.6mm; }
+
+  /* ---------- Secciones ---------- */
+  section { margin-top: 3.5mm; }
+
+  h2 {
+    font-size: 8.2pt;
+    font-weight: 700;
+    letter-spacing: 1.1pt;
+    text-transform: uppercase;
+    color: var(--acento);
+    padding-bottom: 1mm;
+    margin-bottom: 2.2mm;
+    border-bottom: 1px solid var(--linea);
+  }
+
+  .perfil { color: var(--suave); text-align: justify; }
+
+  /* ---------- Entradas (formación / proyectos) ---------- */
+  .entrada { margin-bottom: 2.2mm; }
+  .entrada:last-child { margin-bottom: 0; }
+
+  .fila {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 4mm;
+  }
+  .puesto { font-size: 10pt; font-weight: 620; }
+  .fecha  { font-size: 8.4pt; color: var(--tenue); white-space: nowrap; }
+  .lugar  { font-size: 8.8pt; color: var(--suave); margin-top: 0.3mm; }
+
+  .resumen { color: var(--suave); margin-top: 1.2mm; }
+
+  ul { list-style: none; margin-top: 1.2mm; }
+  li {
+    position: relative;
+    padding-left: 3.6mm;
+    margin-bottom: 0.6mm;
+    color: var(--suave);
+  }
+  li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 1.55mm;
+    width: 1.3mm; height: 1.3mm;
+    border-radius: 50%;
+    background: var(--linea);
+  }
+
+  .pila { margin-top: 1.1mm; font-size: 8.3pt; color: var(--tenue); }
+  .pila b { color: var(--suave); font-weight: 600; }
+
+  /* ---------- Habilidades ---------- */
+  .habilidades { display: grid; gap: 1.5mm; }
+  .grupo { display: flex; gap: 3mm; align-items: baseline; }
+  .grupo > .etiqueta { flex: 0 0 30mm; font-weight: 620; font-size: 8.8pt; }
+  .grupo > .lista { color: var(--suave); font-size: 8.9pt; }
+
+  /* ---------- Cierre ---------- */
+  .cierre {
+    display: flex;
+    gap: 10mm;
+    margin-top: 3mm;
+    padding-top: 2.2mm;
+    border-top: 1px solid var(--linea);
+    font-size: 8.8pt;
+    color: var(--suave);
+  }
+  .cierre b { color: var(--tinta); font-weight: 620; display: block; font-size: 8.4pt; }
+</style>
+</head>
+<body>
+<div class="hoja">
+
+  <header class="encabezado">
+    <div class="iniciales">CM</div>
+    <div>
+      <div class="nombre">Cristian Cantillo Mejía</div>
+      <div class="rol">Desarrollador de Software</div>
+      <div class="contacto">
+        Florencia, Caquetá — Colombia<span class="sep">|</span>+57 320 603 4364<span class="sep">|</span>cristiamejia155@gmail.com<br>
+        <a href="https://proyectosena.online">proyectosena.online</a><span class="sep">|</span><a href="https://github.com/Aryannext">github.com/Aryannext</a><span class="sep">|</span><a href="https://www.linkedin.com/in/cristia-mejia-23a3a2435/">linkedin.com/in/cristia-mejia-23a3a2435</a>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <h2>Perfil</h2>
+    <p class="perfil">
+      Estudiante de Análisis y Desarrollo de Software del SENA, a un año de graduarme. He
+      construido y desplegado por mi cuenta tres proyectos completos —dos de ellos en línea—
+      trabajando el frente, la API, la base de datos y el servidor. Me interesa el problema de
+      que una aplicación siga funcionando sin internet y se ponga al día sola al reconectar.
+      Busco mi primera oportunidad profesional.
+    </p>
+  </section>
+
+  <section>
+    <h2>Formación</h2>
+    <div class="entrada">
+      <div class="fila">
+        <span class="puesto">Tecnólogo en Análisis y Desarrollo de Software</span>
+        <span class="fecha">2024 — 2026 (en curso)</span>
+      </div>
+      <div class="lugar">SENA — Centro Tecnológico de la Amazonia · Florencia, Caquetá</div>
+      <ul>
+        <li>Desarrollo web y móvil, bases de datos relacionales y análisis de sistemas.</li>
+        <li>Los tres proyectos del portafolio son propios y los llevé de punta a punta, sin equipo.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Proyectos</h2>
+
+    <div class="entrada">
+      <div class="fila">
+        <span class="puesto">Sistema Jurídico</span>
+        <span class="fecha">proyectosena.online/sistema-juridico</span>
+      </div>
+      <div class="resumen">
+        Plataforma web para administrar casos legales, expedientes y actuaciones. Es el
+        proyecto más grande que he hecho, y está desplegado y accesible en línea.
+      </div>
+      <ul>
+        <li>Autenticación con JWT y contraseñas cifradas con bcrypt; la API va detrás de Helmet, CORS y limitación de peticiones.</li>
+        <li>Los documentos de cada expediente se guardan en Amazon S3, no en el disco del servidor; los PDF se generan con PDFKit.</li>
+        <li>Desplegado con Docker Compose —incluido su propio contenedor de PostgreSQL— y servido por Nginx. Pruebas con Jest, Supertest y Cypress.</li>
+      </ul>
+      <div class="pila"><b>Stack:</b> React 19 · Vite · Tailwind · shadcn/ui · Node 22 · Express · PostgreSQL 16 · Prisma · JWT · AWS S3 · Docker · Nginx</div>
+    </div>
+
+    <div class="entrada">
+      <div class="fila">
+        <span class="puesto">Costura App (Atelier Manager)</span>
+        <span class="fecha">proyectosena.online/costura</span>
+      </div>
+      <div class="resumen">
+        Gestión de pedidos y medidas para un taller de costura, en el celular y en la web.
+        Nació de un requisito concreto: que la modista pueda trabajar sin señal.
+      </div>
+      <ul>
+        <li>Vue 3 empaquetado a Android con Capacitor 8; los datos viven en SQLite nativo dentro del dispositivo y suben solos al reconectar.</li>
+        <li>Actualizaciones por aire con Capacitor Updater, sin reinstalar la aplicación.</li>
+        <li>Pruebas unitarias con Vitest y de flujo completo con Playwright, ejecutadas en cada push por GitHub Actions.</li>
+      </ul>
+      <div class="pila"><b>Stack:</b> Vue 3 · Vite · JavaScript · Capacitor 8 · SQLite · Android · GitHub Actions</div>
+    </div>
+
+    <div class="entrada">
+      <div class="fila">
+        <span class="puesto">Sincronización Web / App nativa</span>
+        <span class="fecha">github.com/Aryannext</span>
+      </div>
+      <div class="resumen">
+        Cómo se ponen de acuerdo una app Android nativa y una plataforma web cuando ninguna de
+        las dos tiene internet garantizado.
+      </div>
+      <ul>
+        <li>Cada registro lleva un UUID y un número de versión, para resolver qué pasa cuando los dos lados cambiaron el mismo dato.</li>
+        <li>App Android en Kotlin con Room y WorkManager; centro de mando en React y API en Express 5 sobre PostgreSQL.</li>
+      </ul>
+      <div class="pila"><b>Stack:</b> React 19 · Vite · Express 5 · PostgreSQL · Kotlin · Room · WorkManager · SQLite</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Habilidades técnicas</h2>
+    <div class="habilidades">
+      <div class="grupo">
+        <span class="etiqueta">Frontend</span>
+        <span class="lista">HTML · CSS · JavaScript · React · Vue 3 · Next.js · Tailwind · Vite</span>
+      </div>
+      <div class="grupo">
+        <span class="etiqueta">Backend y datos</span>
+        <span class="lista">Node.js · Express · PostgreSQL · Prisma · SQLite · JWT · APIs REST</span>
+      </div>
+      <div class="grupo">
+        <span class="etiqueta">Móvil</span>
+        <span class="lista">Capacitor · Android · Kotlin · Room · sincronización offline-first</span>
+      </div>
+      <div class="grupo">
+        <span class="etiqueta">Infraestructura</span>
+        <span class="lista">Linux · Docker · Nginx · AWS S3 · npm · administración de VPS</span>
+      </div>
+      <div class="grupo">
+        <span class="etiqueta">Herramientas</span>
+        <span class="lista">Git · GitHub · GitHub Actions · Jest · Vitest · Playwright · Cypress</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="cierre">
+    <div><b>Idiomas</b>Español nativo · Inglés básico (lectura técnica)</div>
+    <div><b>Disponibilidad</b>Remoto o presencial</div>
+    <div><b>Portafolio</b>proyectosena.online</div>
+  </div>
+
+</div>
+</body>
+</html>

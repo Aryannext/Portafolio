@@ -57,7 +57,7 @@ const ProjectsLinks = ({ live, repo }: { live?: string; repo?: string }) => {
           href={live}
         >
           <Button variant={"default"} size={"sm"}>
-            Visit Website
+            Ver el sitio
             <ArrowUpRight className="ml-3 w-5 h-5" />
           </Button>
         </Link>
@@ -70,7 +70,7 @@ const ProjectsLinks = ({ live, repo }: { live?: string; repo?: string }) => {
           href={repo}
         >
           <Button variant={"default"} size={"sm"}>
-            Github
+            Ver el código
             <ArrowUpRight className="ml-3 w-5 h-5" />
           </Button>
         </Link>
