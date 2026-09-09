@@ -10,7 +10,10 @@ WORKDIR /app
 # corepack trae pnpm sin instalarlo aparte; la versión sale de package.json
 RUN corepack enable
 
-COPY package.json pnpm-lock.yaml ./
+# pnpm-workspace.yaml lleva la lista de scripts de instalación autorizados.
+# Sin él, pnpm 12 aborta con ERR_PNPM_IGNORED_BUILDS aunque el archivo exista
+# en el repositorio: lo que cuenta es lo que entra a la imagen.
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 RUN pnpm install --frozen-lockfile
 
 # ---------- 2. Compilación ----------
