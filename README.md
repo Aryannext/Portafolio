@@ -1,188 +1,112 @@
-# 🚀 3D Portfolio
+# Portafolio — Cristian Cantillo Mejía
 
-A jaw-dropping developer portfolio packed with interactive 3D animations, buttery smooth transitions, and a space-themed aesthetic. Not your average portfolio template! This one has a fully interactive 3D keyboard where each keycap is a skill.
+Mi portafolio como desarrollador de software. Tecnólogo en Análisis y Desarrollo
+de Software (SENA), Florencia, Caquetá.
 
-> **Free to use!** This portfolio is open source. If you use it, a credit/link back would be really appreciated 🙏
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Naresh-Khatri/3d-portfolio)
-
-![Portfolio Preview](https://github.com/Naresh-Khatri/Portfolio/blob/main/public/assets/projects-screenshots/portfolio/landing.png?raw=true)
-
-## ✨ Features
-
-- **Interactive 3D Keyboard** — Custom Spline keyboard where each keycap represents a skill, revealing titles and descriptions on hover/press
-- **Buttery Animations** — GSAP + Framer Motion powered scroll, hover, and reveal animations
-- **Space Theme** — Floating particles on a dark canvas for a cosmic vibe
-- **Light & Dark Mode** — Full theme support with cheeky disclaimer toasts
-- **Responsive** — Works across all screen sizes
-- **Contact Form** — Email delivery via Resend
-- **Analytics** _(optional)_ — Umami analytics integration
-
-## 🛠️ Tech Stack
-
-| Layer | Technologies |
-|---|---|
-| **Framework** | Next.js 14, React 18, TypeScript |
-| **Styling** | Tailwind CSS, Shadcn UI, Aceternity UI |
-| **Animation** | GSAP, Framer Motion |
-| **3D** | Spline Runtime |
-| **Email** | Resend |
-| **Misc** | Lenis (smooth scroll), Zod, next-themes |
+**[proyectosena.online](https://proyectosena.online)** ·
+[LinkedIn](https://www.linkedin.com/in/cristia-mejia-23a3a2435/) ·
+[cristiamejia155@gmail.com](mailto:cristiamejia155@gmail.com)
 
 ---
 
-## 🚀 Getting Started
+## De dónde salió esto
 
-### Prerequisites
+Está construido sobre **[3d-portfolio](https://github.com/Naresh-Khatri/3d-portfolio)**
+de **[Naresh Khatri](https://github.com/Naresh-Khatri)**, que lo publicó como
+código abierto y pide un enlace de vuelta a quien lo use. Este README y el pie de
+página del sitio son ese crédito. El detalle completo está en
+**[CREDITS.md](./CREDITS.md)**.
 
-- Node.js (v18+)
-- pnpm (recommended), npm, or yarn
+**Si te gusta el diseño, ve al repositorio de Naresh** — el mérito del teclado 3D
+y de la arquitectura es suyo.
 
-### Installation
+## Qué cambié
 
-1. **Clone the repository:**
+No es la plantilla con otro nombre. Lo que hice:
 
-    ```bash
-    git clone https://github.com/Naresh-Khatri/3d-portfolio.git
-    cd 3d-portfolio
-    ```
+**Contenido**
+- Mis datos, mis tres proyectos y mi formación real.
+- Se retiró todo el contenido personal del autor original: sus fotos, su hoja de
+  vida, las capturas de sus ocho proyectos y su entrada de blog.
+- Interfaz completamente en español, incluidos los textos que solo lee un lector
+  de pantalla.
 
-2. **Install dependencies:**
+**El teclado 3D**
+- La escena de Spline trae 24 tecnologías. Solo se muestran las **17 que manejo**;
+  las demás quedan ocultas e inertes, sin responder al cursor ni al teclado.
+- Esto se resuelve desde el código con `visible` del runtime de Spline. No se
+  puede con `color`, porque cada keycap es un grupo y no una malla.
+- Las descripciones de cada tecnología están reescritas en español, contando para
+  qué la uso de verdad.
 
-    ```bash
-    pnpm install
-    ```
+**Correcciones sobre la plantilla**
+- Se **desactivó la telemetría**: un componente enviaba el dominio del despliegue
+  al servidor del autor original, desde el navegador de cada visitante.
+- El botón "Hoja de vida" apuntaba al Google Drive del autor original.
+- El diálogo de proyectos no tenía `DialogTitle`, que Radix exige para que un
+  lector de pantalla anuncie la ventana al abrirse.
+- `/api/send` creaba el cliente de Resend al cargar el módulo. Como su
+  constructor lanza si falta la API key, **el build entero fallaba** sin ella.
+  Ahora se crea dentro del handler y responde 503 con un mensaje claro.
+- Se eliminaron las rutas de blog: sin artículos, `generateStaticParams` devolvía
+  vacío y *Cache Components* lo trata como error de compilación.
 
-3. **Set up environment variables:**
+## Los proyectos
 
-    Copy `.env.example` to `.env.local` and fill in the values:
+| Proyecto | Qué es | Stack |
+|---|---|---|
+| [Sistema Jurídico](https://proyectosena.online/sistema-juridico) | Gestión de casos legales y expedientes | React 19, Vite, Tailwind · Node 22, Express, PostgreSQL 16 + Prisma, JWT, S3 · Docker, Nginx |
+| [Costura App](https://proyectosena.online/costura) | Pedidos y medidas para un taller, en móvil y web | Vue 3, Vite · Capacitor 8, SQLite nativo, Android |
+| [Sincronización Web / App nativa](https://github.com/Aryannext/Sincronizaci-n-Web---app-Nativa) | Sincronización offline-first entre app nativa y web | React 19 · Express 5, PostgreSQL · Kotlin, Room, WorkManager |
 
-    ```bash
-    cp .env.example .env.local
-    ```
+## Stack de este sitio
 
-    | Variable | Required | Description |
-    |---|---|---|
-    | `RESEND_API_KEY` | Yes | API key from [Resend](https://resend.com) for the contact form |
-    | `NEXT_PUBLIC_WS_URL` | No | WebSocket server URL for realtime features (cursors, chat, presence) |
-    | `UMAMI_DOMAIN` | No | Umami analytics script URL |
-    | `UMAMI_SITE_ID` | No | Umami website ID |
+Next.js 16 · React 19 · TypeScript · Tailwind · Shadcn UI · GSAP · Framer Motion ·
+Spline (teclado 3D) · Lenis · Resend
 
-4. **Run the development server:**
+## Cómo correrlo
 
-    ```bash
-    pnpm dev
-    ```
+Necesitas Node 18+ y pnpm.
 
-5. Open [http://localhost:3000](http://localhost:3000) and see the magic ✨
-
----
-
-## 🎨 Make It Your Own
-
-All personal info is centralized in [`src/data/config.ts`](src/data/config.ts). Edit this single file to rebrand the portfolio:
-
-```ts
-const config = {
-  title: "Your Name | Your Title",
-  description: {
-    long: "Your long description for SEO...",
-    short: "Your short description...",
-  },
-  keywords: ["your", "keywords"],
-  author: "Your Name",
-  email: "you@example.com",
-  site: "https://yoursite.com",
-
-  // GitHub stars button in the header
-  githubUsername: "your-github-username",
-  githubRepo: "your-repo-name",
-
-  social: {
-    twitter: "https://x.com/you",
-    linkedin: "https://linkedin.com/in/you",
-    instagram: "https://instagram.com/you",
-    facebook: "https://facebook.com/you",
-    github: "https://github.com/you",
-  },
-};
+```bash
+pnpm install
 ```
 
-Other files you'll want to customize:
-
-| File | What to change |
-|---|---|
-| `src/data/projects.tsx` | Your projects, screenshots, descriptions, and tech stacks |
-| `src/data/constants.ts` | Skills list (name, description, icon) and work experience |
-| `public/assets/` | Your images, OG image, and project screenshots |
-
----
-
-## ⌨️ Updating the 3D Keyboard Skills
-
-The 3D keyboard keycaps are baked into a Spline file. To update the skills displayed on the keyboard:
-
-1. **Import** the `public/assets/skills-keyboard.spline` file into [Spline](https://spline.design/)
-2. **Unhide** the keycap objects you want to edit
-3. **Update** the logo images on each keycap to your new skill icons
-4. **Rename** each keycap object to match the skill's `name` field in `src/data/constants.ts` (e.g. `js`, `react`, `docker`)
-5. **Hide** all keycap objects again
-6. **Export** the scene and overwrite `public/assets/skills-keyboard.spline`
-
-After updating the Spline file, make sure `src/data/constants.ts` has matching entries for every skill on the keyboard:
-
-```ts
-// Each keycap object name in Spline must match a key in SKILLS
-export const SKILLS: Record<SkillNames, Skill> = {
-  js: { name: "js", label: "JavaScript", shortDescription: "...", ... },
-  react: { name: "react", label: "React", shortDescription: "...", ... },
-  // ... add/remove entries to match your keyboard
-};
+```bash
+cp .env.example .env.local
 ```
 
-The `SkillNames` enum, `SKILLS` record, and the Spline keycap names must all stay in sync for the keyboard interactions to work correctly.
+```bash
+pnpm dev
+```
 
----
+Abre [http://localhost:3000](http://localhost:3000).
 
-## 🔌 Realtime Features (Optional)
+**Ninguna variable de entorno es obligatoria.** Sin `RESEND_API_KEY` el sitio
+funciona igual; solo el formulario de contacto responde 503 con un mensaje que
+invita a escribir al correo directo.
 
-The portfolio supports optional realtime features powered by a **separate backend API**:
+### Compilar
 
-- 🖱️ **Live cursors** — See other visitors' cursors in realtime
-- 👥 **Online presence** — Shows who's currently on the site
-- 💬 **Chat** — Live chat between visitors
+```bash
+pnpm exec next build --webpack
+```
 
-These features activate automatically when the `NEXT_PUBLIC_WS_URL` environment variable is set. Without it, the portfolio works perfectly fine as a static site — no realtime features, no backend dependency.
+> **Por qué `--webpack`:** Turbopack genera nombres de archivo muy largos. En una
+> ruta profunda de Windows se supera el límite de 260 caracteres y el build
+> revienta. En Linux no pasa, pero se usa webpack en ambos lados para que el
+> build sea reproducible.
 
-> [!NOTE]
-> The backend API is **not open source**. This is intentional! Too many people have cloned the portfolio and claimed they built it from scratch. The realtime server stays private to keep the live experience unique make make it standout.
+## Despliegue
 
+Corre en un VPS con **Dokploy**: GitHub → build con Docker → Traefik con SSL
+automático. El `Dockerfile` usa `output: standalone` (imagen de ~200 MB) y el
+proceso no corre como root.
 
----
+El paso a paso está en **[DESPLIEGUE.md](./DESPLIEGUE.md)**.
 
-## 🚀 Deployment
+## Licencia
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Naresh-Khatri/3d-portfolio)
-
-This site is deployed on **Vercel**. To deploy your own:
-
-1. Push your code to a GitHub repository
-2. Connect the repository to [Vercel](https://vercel.com)
-3. Add your environment variables in the Vercel dashboard
-4. Vercel handles the rest — automatic deployments on every push
-
----
-
-## 🤝 Contributing
-
-If you'd like to contribute or suggest improvements, feel free to open an issue or submit a pull request. All contributions are welcome!
-
----
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
-
-If you use this portfolio, a credit or link back to the [original repo](https://github.com/Naresh-Khatri/3d-portfolio) would be much appreciated ❤️
-
-Note on analytics: a deployed copy reports its own hostname once per browser (nothing else — no visitor, page, or referrer data) so I can see where the template gets used.
+El código de la plantilla base es de Naresh Khatri, publicado como código
+abierto — ver [CREDITS.md](./CREDITS.md). El contenido de este sitio (textos,
+proyectos, datos personales) es mío.
