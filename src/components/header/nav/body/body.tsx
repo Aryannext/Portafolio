@@ -47,7 +47,10 @@ export default function Body({
           exit="exit"
           key={char + i}
         >
-          {char}
+          {/* El contenedor es `display: flex` (style.module.scss), así que cada
+              letra es un elemento flex y el que lleva un espacio normal colapsa
+              a cero: "Sobre mí" se leía "SOBREMÍ". El espacio duro no colapsa. */}
+          {char === " " ? "\u00A0" : char}
         </motion.span>
       );
     });
