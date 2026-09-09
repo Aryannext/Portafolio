@@ -1,4 +1,15 @@
+# Scripts de instalación autorizados.
+#
+# pnpm 12 bloquea por defecto los scripts postinstall de las dependencias (una
+# medida contra paquetes maliciosos) y exige decidir explícitamente cuáles se
+# permiten. Sin esto, `pnpm install --frozen-lockfile` sale con código 1 y
+# rompe el build de Docker.
+#
+# Los tres son legítimos y necesarios:
+#   sharp            optimización de imágenes de Next; compila su binario nativo
+#   @parcel/watcher  vigilancia de archivos en desarrollo
+#   unrs-resolver    resolución de módulos que usa eslint
 allowBuilds:
-  '@parcel/watcher': set this to true or false
-  sharp: set this to true or false
-  unrs-resolver: set this to true or false
+  '@parcel/watcher': true
+  sharp: true
+  unrs-resolver: true
