@@ -242,6 +242,29 @@ const KeyboardScene = ({ maxDpr }: { maxDpr: number }) => {
     return { start, stop };
   };
 
+  /**
+   * Deja visible exactamente un juego de teclas: el del ancho actual.
+   *
+   * La escena trae dos por cada tecnología, `keycap-desktop` y `keycap-mobile`,
+   * porque el teclado se recoloca en pantallas angostas. El revelado original
+   * encendía el juego del diseño vigente y nunca apagaba el otro, y además solo
+   * corre una vez. Al cruzar el ancho de corte —girar el teléfono, ajustar la
+   * ventana— quedaba encendido el juego del diseño anterior mientras el teclado
+   * ya se había movido: por eso aparecían teclas flotando fuera de la base.
+   *
+   * @param encender si además hay que prender el juego correcto. Durante el
+   * revelado se hace aparte, con la animación escalonada.
+   */
+  const aplicarVarianteDeTeclas = (encender: boolean) => {
+    if (!splineApp) return;
+    const activa = isMobile ? "keycap-mobile" : "keycap-desktop";
+    const inactiva = isMobile ? "keycap-desktop" : "keycap-mobile";
+    for (const obj of splineApp.getAllObjects()) {
+      if (obj.name === inactiva) obj.visible = false;
+      else if (encender && obj.name === activa) obj.visible = true;
+    }
+  };
+
   const updateKeyboardTransform = async () => {
     if (!splineApp) return;
     const kbd = splineApp.findObjectByName("keyboard");
@@ -267,6 +290,8 @@ const KeyboardScene = ({ maxDpr }: { maxDpr: number }) => {
     const keycaps = allObjects.filter((obj) => obj.name === "keycap");
 
     await sleep(900);
+
+    aplicarVarianteDeTeclas(false);
 
     if (isMobile) {
       const mobileKeyCaps = allObjects.filter((obj) => obj.name === "keycap-mobile");
@@ -318,6 +343,13 @@ const KeyboardScene = ({ maxDpr }: { maxDpr: number }) => {
       if (obj) obj.visible = false;
     }
   };
+
+  // El revelado corre una sola vez, así que el cambio de ancho hay que
+  // atenderlo aparte o quedan visibles los dos juegos de teclas.
+  useEffect(() => {
+    if (!splineApp || !keyboardRevealed) return;
+    aplicarVarianteDeTeclas(true);
+  }, [splineApp, isMobile, keyboardRevealed]);
 
   useEffect(() => {
     if (!splineApp) return;
