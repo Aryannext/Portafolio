@@ -557,7 +557,7 @@ const KeyboardScene = ({ maxDpr }: { maxDpr: number }) => {
         // Cache-Control immutable a un año, así que cambiar el contenido sin
         // cambiar el nombre dejaría a los visitantes que ya entraron con el
         // teclado viejo hasta 2027.
-        scene="/assets/skills-keyboard-v2.spline"
+        scene="/assets/skills-keyboard-v3.spline"
       />
     </Suspense>
   );

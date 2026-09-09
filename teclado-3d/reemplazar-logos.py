@@ -38,7 +38,7 @@ import struct
 import sys
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-ESCENA = os.path.join(RAIZ, "public", "assets", "skills-keyboard-v2.spline")
+ESCENA = os.path.join(RAIZ, "public", "assets", "skills-keyboard-v3.spline")
 LOGOS = os.path.join(RAIZ, "teclado-3d", "logos")
 
 # índice del PNG (tecla original) -> logo nuevo. El emparejamiento busca que el
@@ -53,6 +53,12 @@ CAMBIOS = {
     22: "kotlin",      # era vim
     23: "prisma",      # era vercel    — tecla negra
 }
+
+# La tecla de PHP no salió de aquí: `js` y `ts` son las dos únicas que no traen
+# imagen. Su rótulo es texto 3D —un TextGeometry con la cadena en Inter Bold— y
+# para convertir la de TypeScript en PHP bastó cambiar esa cadena dentro del
+# archivo: el fixstr de dos letras por el de tres. Aparecía una sola vez en todo
+# el archivo, así que no hubo riesgo de tocar otra cosa.
 
 SIG = b"\x89PNG\r\n\x1a\n"
 

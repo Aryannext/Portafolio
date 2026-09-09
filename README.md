@@ -37,9 +37,12 @@ No es la plantilla con otro nombre. Lo que hice:
   así que **se reaprovecharon**: se les cambió el logo dentro del propio archivo
   y ahora son Vite, Prisma, SQLite, Capacitor, Android, Kotlin y Cloudflare. El
   cómo está en [teclado-3d/](./teclado-3d/).
-- Quedan 23 tecnologías encendidas y solo TypeScript apagado. Las apagadas no
-  responden al cursor ni al teclado: se ocultan con `visible` del runtime. No
-  sirve `color`, porque cada keycap es un grupo y no una malla.
+- La tecla de TypeScript pasó a ser **PHP** por otro camino: `js` y `ts` son las
+  dos únicas sin imagen —su rótulo es texto 3D— así que ahí solo hubo que cambiar
+  la cadena. Quedan las 24 encendidas.
+- Si alguna se apaga, deja de responder al cursor y al teclado: se oculta con
+  `visible` del runtime. No sirve `color`, porque cada keycap es un grupo y no
+  una malla.
 - Las descripciones de cada tecnología están reescritas en español, contando para
   qué la uso de verdad.
 - El color de cada tecla sí está horneado y no se puede cambiar desde código; las

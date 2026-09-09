@@ -1,7 +1,7 @@
 // thoda zada ts ho gya idhar
 export enum SkillNames {
   JS = "js",
-  TS = "ts",
+  PHP = "ts",
   HTML = "html",
   CSS = "css",
   REACT = "react",
@@ -70,6 +70,7 @@ export const MIS_SKILLS: SkillNames[] = [
   SkillNames.ANDROID,
   SkillNames.KOTLIN,
   SkillNames.CLOUDFLARE,
+  SkillNames.PHP,
 ];
 
 /** Color de las teclas apagadas. */
@@ -87,14 +88,13 @@ export const SKILLS: Record<SkillNames, Skill> = {
     color: "#f0db4f",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
   },
-  [SkillNames.TS]: {
+  [SkillNames.PHP]: {
     id: 2,
     name: "ts",
-    label: "TypeScript",
-    shortDescription:
-      "JavaScript avisando de los errores antes de que exploten.",
-    color: "#007acc",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+    label: "PHP",
+    shortDescription: "Con lo que aprendí a montar un servidor que devuelve páginas.",
+    color: "#777bb4",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg",
   },
   [SkillNames.HTML]: {
     id: 3,
