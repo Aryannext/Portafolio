@@ -21,6 +21,10 @@ import {
   SiThreedotjs,
   SiVite,
 } from "react-icons/si";
+// Las capturas llevan versión en el nombre. El despliegue anterior las sirvió
+// con Cache-Control immutable a un año (la regla cubría todo /assets), así que
+// quien ya entró al sitio las tiene congeladas en el navegador y no volvería a
+// pedirlas nunca. Cambiar el nombre es la única forma de que las vea.
 const BASE_PATH = "/assets/projects-screenshots";
 
 // Renders a brand SVG from /public as a monochrome glyph that inherits the
@@ -237,15 +241,15 @@ export type Project = {
 
 /**
  * Proyectos reales de Cristian: académicos y personales, desarrollados solo.
- * Las capturas van en /assets/projects-screenshots/<id>/landing.png
+ * Las capturas van en /assets/projects-screenshots/<id>/landing-v2.png
  */
 const projects: Project[] = [
   {
     id: "sistema-juridico",
     category: "Plataforma web",
     title: "Sistema Jurídico",
-    src: "/assets/projects-screenshots/sistema-juridico/landing.png",
-    screenshots: ["landing.png"],
+    src: "/assets/projects-screenshots/sistema-juridico/landing-v2.png",
+    screenshots: ["landing-v2.png"],
     skills: {
       frontend: [
         SKILLS.react,
@@ -310,8 +314,8 @@ const projects: Project[] = [
     id: "costura-app",
     category: "Aplicación móvil y web",
     title: "Costura App (Atelier Manager)",
-    src: "/assets/projects-screenshots/costura-app/landing.png",
-    screenshots: ["landing.png"],
+    src: "/assets/projects-screenshots/costura-app/landing-v2.png",
+    screenshots: ["landing-v2.png"],
     skills: {
       frontend: [SKILLS.vue, SKILLS.vite, SKILLS.js],
       backend: [
@@ -365,8 +369,8 @@ const projects: Project[] = [
     id: "sincronizacion-nativa",
     category: "Arquitectura",
     title: "Sincronización Web / App nativa",
-    src: "/assets/projects-screenshots/sincronizacion-nativa/landing.png",
-    screenshots: ["landing.png"],
+    src: "/assets/projects-screenshots/sincronizacion-nativa/landing-v2.png",
+    screenshots: ["landing-v2.png"],
     skills: {
       frontend: [SKILLS.react, SKILLS.vite],
       backend: [
