@@ -15,7 +15,7 @@ const ExperienceSection = () => {
         <SectionHeader
           id="experience"
           title="Formación"
-          desc="My professional journey."
+          desc="Mi recorrido como desarrollador."
           className="mb-12 md:mb-20 mt-0"
         />
 

@@ -43,7 +43,7 @@ const Frame = ({
     whileHover="hover"
     whileTap={{ scale: 0.992 }}
     transition={spring}
-    aria-label="Open screenshot"
+    aria-label="Abrir la captura"
     className="group/frame relative block w-full cursor-zoom-in overflow-hidden rounded-xl border border-border outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
   >
     <Image
@@ -143,14 +143,14 @@ const SlideShow = ({ images }: { images: string[] }) => {
             <button
               type="button"
               className="splide__arrow splide__arrow--prev"
-              aria-label="Previous slide"
+              aria-label="Diapositiva anterior"
             >
               <ChevronLeft className="h-4 w-4" strokeWidth={2} />
             </button>
             <button
               type="button"
               className="splide__arrow splide__arrow--next"
-              aria-label="Next slide"
+              aria-label="Diapositiva siguiente"
             >
               <ChevronRight className="h-4 w-4" strokeWidth={2} />
             </button>
@@ -200,7 +200,7 @@ const SlideShow = ({ images }: { images: string[] }) => {
               <>
                 <button
                   type="button"
-                  aria-label="Previous screenshot"
+                  aria-label="Captura anterior"
                   onClick={(e) => {
                     e.stopPropagation();
                     step(-1);
@@ -211,7 +211,7 @@ const SlideShow = ({ images }: { images: string[] }) => {
                 </button>
                 <button
                   type="button"
-                  aria-label="Next screenshot"
+                  aria-label="Captura siguiente"
                   onClick={(e) => {
                     e.stopPropagation();
                     step(1);

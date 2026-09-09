@@ -151,7 +151,7 @@ export default function ResumeDoodle({
                 <motion.button
                   key={c}
                   type="button"
-                  aria-label={`Pick color ${c}`}
+                  aria-label={`Elegir el color ${c}`}
                   onClick={() => setColor(c)}
                   whileHover={{ scale: 1.2 }}
                   whileTap={{ scale: 0.85 }}
@@ -165,7 +165,7 @@ export default function ResumeDoodle({
               <div className="mx-1 h-5 w-px bg-border" />
               <motion.button
                 type="button"
-                aria-label="Clear doodles"
+                aria-label="Borrar los garabatos"
                 onClick={clear}
                 disabled={!hasDrawing}
                 whileHover={{ scale: hasDrawing ? 1.1 : 1 }}
@@ -208,7 +208,7 @@ export default function ResumeDoodle({
               <Pencil className="h-4 w-4" />
             )}
           </motion.span>
-          {active ? "Done" : "Doodle on it"}
+          {active ? "Listo" : "Garabatear encima"}
         </motion.button>
       </div>
     </div>
