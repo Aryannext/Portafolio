@@ -52,7 +52,9 @@ const HeroSection = () => {
                       <h1
                         className={cn(
                           "-ml-[6px] leading-none text-transparent text-slate-800 text-left",
-                          "font-bold text-7xl md:text-7xl lg:text-8xl xl:text-9xl",
+                          // Un escalón por debajo de lo que traía la plantilla (era 7xl/8xl/9xl).
+                          // Con 9xl el apellido llegaba hasta el teclado 3D y se tocaban.
+                          "font-bold text-6xl md:text-6xl lg:text-7xl xl:text-8xl",
                           "cursor-default text-edge-outline font-display "
                         )}
                       >
