@@ -151,7 +151,25 @@ export function usePerfProfile(): PerfProfile {
     // Data Saver. Viewport size (a real media query) just scales quality down;
     // it never removes the scene. No capability heuristics — see detectSaveData.
     const lowEnd = saveData;
-    const disable3D = reducedMotion || saveData;
+    // En teléfonos no se carga la escena 3D. No es una decisión de rendimiento
+    // (aunque también ahorre 350 KB y WebGL): en pantallas altas y estrechas
+    // Spline DIBUJA el teclado arrimado a la esquina inferior izquierda,
+    // mientras que las pulsaciones siguen registrándose donde el teclado
+    // realmente está, centrado. Medido a 390x844: se dibuja en x 17..173,
+    // y 562..695, y responde en x 50..380, y 280..560 — no se solapan. En
+    // escritorio sí coinciden.
+    //
+    // Descartados: la densidad de pantalla (idéntico a 1x y a 3x), un
+    // fotograma congelado (el dibujo no se mueve tras cientos de eventos) y
+    // que el detector usara otra cámara (usa la activa, la misma que dibuja).
+    // El fallo está dentro de Spline al adaptar la escena a esa proporción;
+    // además el archivo que se carga es un `.spline` del editor, formato que
+    // el propio runtime avisa que no soporta.
+    //
+    // La sección de Habilidades detecta esto y muestra la rejilla de logos,
+    // que sí se puede tocar. Si algún día se reexporta la escena como
+    // `.splinecode` y se comprueba en un teléfono, se puede quitar `isMobile`.
+    const disable3D = reducedMotion || saveData || isMobile;
     const disableDecorative = reducedMotion;
     const particleCount = disableDecorative ? 0 : isMobile ? 30 : 100;
     const maxDpr = isMobile ? 1.5 : 2;
