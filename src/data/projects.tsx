@@ -8,6 +8,7 @@ import Link from "next/link";
 import { ReactNode } from "react";
 // Spline has no thesvg entry — keep the Three.js mark as its stand-in.
 import {
+  SiChartdotjs,
   SiCloudflare,
   SiAndroid,
   SiCapacitor,
@@ -15,8 +16,10 @@ import {
   SiGithubactions,
   SiJsonwebtokens,
   SiKotlin,
+  SiApache,
   SiMysql,
   SiNginx,
+  SiPhp,
   SiSqlite,
   SiThreedotjs,
   SiVite,
@@ -214,6 +217,9 @@ const iconoReact = (title: string, Icono: React.ComponentType): Skill => ({
 
 const SKILLS = {
   ...PROJECT_SKILLS,
+  php: iconoReact("PHP", SiPhp),
+  chartjs: iconoReact("Chart.js", SiChartdotjs),
+  apache: iconoReact("Apache", SiApache),
   mysql: iconoReact("MySQL", SiMysql),
   sqlite: iconoReact("SQLite", SiSqlite),
   kotlin: iconoReact("Kotlin", SiKotlin),
@@ -245,6 +251,93 @@ export type Project = {
  */
 const projects: Project[] = [
   {
+    id: "sgpd-sena",
+    category: "Plataforma web",
+    title: "SGPD — Juicios Evaluativos SENA",
+    src: "/assets/projects-screenshots/sgpd-sena/landing-v2.png",
+    screenshots: ["landing-v2.png"],
+    skills: {
+      frontend: [SKILLS.js, SKILLS.chartjs],
+      backend: [
+        SKILLS.php,
+        SKILLS.mysql,
+        SKILLS.apache,
+        SKILLS.docker,
+      ],
+    },
+    // Pendiente: cambiar a la URL real cuando esté desplegado en el VPS.
+    live: "#",
+    github: "https://github.com/Aryannext/SENA_SGPD",
+    get content() {
+      return (
+        <div>
+          <TypographyP className="font-mono text-2xl text-center">
+            Convierte el reporte plano de Sofía Plus en un sistema con el que un
+            instructor puede ver de verdad cómo va su ficha.
+          </TypographyP>
+          <TypographyP className="font-mono">
+            El SENA registra los juicios evaluativos en Sofía Plus, que solo
+            entrega una sábana de Excel: 2.325 filas donde cada aprendiz aparece
+            repetido una vez por resultado de aprendizaje. Esta plataforma la
+            importa, la normaliza en trece tablas relacionadas y la convierte en
+            un tablero con indicadores, avance por competencia y cumplimiento
+            por fases del proyecto formativo.
+          </TypographyP>
+          <ProjectsLinks live={this.live} repo={this.github} />
+
+          <TypographyH3 className="my-4 mt-8">Importación</TypographyH3>
+          <p className="font-mono mb-2">
+            El importador detecta las columnas por su encabezado, no por su
+            posición, así que aguanta que el reporte cambie de orden. Procesa las
+            2.325 filas en 11 segundos sin un solo error, y es idempotente:
+            volver a subir el mismo archivo actualiza los juicios en lugar de
+            duplicarlos. También lee el PDF del proyecto formativo y extrae sus
+            fases, actividades y los resultados de aprendizaje que cuelgan de
+            cada una.
+          </p>
+
+          <TypographyH3 className="my-4 mt-8">
+            Lo que aprendí auditándolo
+          </TypographyH3>
+          <p className="font-mono mb-2">
+            Cuando lo di por terminado hice una auditoría en serio: levanté el
+            sistema, lo ejecuté con los datos reales y probé cada ruta. Aparecieron
+            doce defectos. El peor no se veía leyendo el código: como la cadena
+            <span className="mx-1">{'"NO APROBADO"'}</span> contiene
+            <span className="mx-1">{'"APROB"'}</span>, el importador guardaba
+            <em>todo juicio reprobado como aprobado</em>. Lo encontró una prueba
+            unitaria de nueve líneas, no una revisión a ojo.
+          </p>
+          <p className="font-mono mb-2">
+            Otro hacía que el panel de alerta temprana contara a los aprendices
+            críticos en el indicador pero los omitiera de la lista, mostrando en
+            su lugar a los que iban bien. Un literal con un carácter corrupto.
+            Pasé de cero pruebas a 78 automatizadas, con una de regresión por
+            cada defecto corregido.
+          </p>
+
+          <TypographyH3 className="my-4 mt-8">Seguridad</TypographyH3>
+          <p className="font-mono mb-2">
+            No tenía ninguna: cualquiera con la URL podía borrar una ficha
+            completa con sus aprendices y calificaciones. Ahora hay sesión con
+            contraseñas cifradas con bcrypt, tres roles, token CSRF en toda
+            escritura y cabeceras de seguridad. Los reportes subidos, que llevan
+            cédulas de personas reales, viven fuera de la raíz web y se sirven
+            por un controlador que exige sesión.
+          </p>
+
+          <TypographyH3 className="my-4 mt-8">Cómo corre</TypographyH3>
+          <p className="font-mono mb-2">
+            PHP 8.2 sobre Apache en un contenedor, con MySQL aparte. La
+            arquitectura es MVC escrita desde cero, sin framework, con PDO y
+            sentencias preparadas. Toda la configuración sale de variables de
+            entorno, así que la misma imagen sirve en local y en el servidor, y
+            al arrancar el contenedor prepara la base de datos solo.
+          </p>
+        </div>
+      );
+    },
+  },  {
     id: "sistema-juridico",
     category: "Plataforma web",
     title: "Sistema Jurídico",

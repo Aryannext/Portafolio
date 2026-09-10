@@ -214,7 +214,7 @@ export const SKILLS: Record<SkillNames, Skill> = {
     id: 17,
     name: "firebase",
     label: "Vite",
-    shortDescription: "El empaquetador de mis tres proyectos. Recarga al instante.",
+    shortDescription: "El empaquetador de mis proyectos. Recarga al instante.",
     color: "#646cff",
     icon: "/assets/logos-skills/vitejs-original.svg",
   },
@@ -304,7 +304,7 @@ export const EXPERIENCE: Experience[] = [
     company: "SENA — Centro Tecnológico de la Amazonia, Florencia",
     description: [
       "Formación en desarrollo web y móvil, bases de datos y análisis de sistemas.",
-      "Construí y desplegué por mi cuenta tres proyectos completos, dos de ellos accesibles en línea.",
+      "Construí y desplegué por mi cuenta cuatro proyectos completos, tres de ellos accesibles en línea.",
       "Diseñé una arquitectura de sincronización offline-first entre una app nativa y una plataforma web.",
       "Actualmente busco mi primera oportunidad profesional, remota o presencial.",
     ],
