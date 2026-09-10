@@ -584,24 +584,47 @@ const AnimatedBackground = () => {
 };
 
 /**
- * Cap the Spline/Three.js renderer's pixel ratio. The scene is published with
- * pixelRatio=0 ("device"), so on a 2–3x screen it renders 4–9x the pixels of a
- * 1x canvas — a huge GPU cost. We clamp it and reapply on resize, since Spline
- * re-reads devicePixelRatio when the canvas resizes. Returns a disposer that
- * removes the resize listener (so it isn't leaked across reloads/unmounts).
+ * Limita la resolución a la que dibuja el teclado 3D.
+ *
+ * La escena viene publicada con pixelRatio "device": en una pantalla de 3x
+ * dibuja 9 veces los píxeles de un lienzo 1x. En un portátil con pantalla densa
+ * eso es mucha GPU para un adorno.
+ *
+ * El detalle que importa: `setPixelRatio` por sí solo NO hace nada. Por dentro
+ * pide un `setSize` con las mismas medidas de siempre, y el `setSize` de Spline
+ * sale antes de tiempo cuando el ancho y el alto no cambian. Hay que forzar el
+ * redimensionado después; `_resize(true)` hace el truco de encoger un píxel y
+ * volver, que existe precisamente para saltarse esa comprobación.
+ *
+ * Comprobado en un navegador de 3x, lienzo de 985x800 CSS:
+ *   sin esto        búfer 2955x2400
+ *   con esto        búfer 1477x1200   (tope de 1.5 en la medición)
+ *
+ * Son APIs internas (empiezan por guión bajo) y pueden desaparecer en cualquier
+ * versión de @splinetool/runtime. Si eso pasa, la comprobación de abajo deja de
+ * cuadrar y la función no toca nada: se pierde la optimización, no la escena.
+ * Justamente eso llevaba pasando sin que nadie se enterara.
  */
 function capSplinePixelRatio(app: Application, maxDpr: number) {
-  const apply = () => {
-    try {
-      const renderer = (app as unknown as { _renderer?: { setPixelRatio?: (n: number) => void } })
-        ._renderer;
-      if (renderer?.setPixelRatio) {
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, maxDpr));
-      }
-    } catch {
-      /* internal API moved — fail silent, scene still renders */
-    }
+  const interno = app as unknown as {
+    _renderer?: {
+      setPixelRatio?: (n: number) => void;
+      getPixelRatio?: () => number;
+    };
+    _resize?: (forzar: boolean) => void;
   };
+
+  const apply = () => {
+    const renderer = interno._renderer;
+    if (typeof renderer?.setPixelRatio !== "function") return;
+
+    const objetivo = Math.min(window.devicePixelRatio || 1, maxDpr);
+    if (renderer.getPixelRatio?.() === objetivo) return;
+
+    renderer.setPixelRatio(objetivo);
+    interno._resize?.(true);
+  };
+
   apply();
   window.addEventListener("resize", apply, { passive: true });
   return () => window.removeEventListener("resize", apply);
