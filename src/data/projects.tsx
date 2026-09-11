@@ -265,8 +265,7 @@ const projects: Project[] = [
         SKILLS.docker,
       ],
     },
-    // Pendiente: cambiar a la URL real cuando esté desplegado en el VPS.
-    live: "#",
+    live: "https://proyectosena.online/sgpd",
     github: "https://github.com/Aryannext/SENA_SGPD",
     get content() {
       return (
