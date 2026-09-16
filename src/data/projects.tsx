@@ -16,6 +16,7 @@ import {
   SiGithubactions,
   SiJsonwebtokens,
   SiKotlin,
+  SiLaravel,
   SiApache,
   SiMysql,
   SiNginx,
@@ -218,6 +219,7 @@ const iconoReact = (title: string, Icono: React.ComponentType): Skill => ({
 const SKILLS = {
   ...PROJECT_SKILLS,
   php: iconoReact("PHP", SiPhp),
+  laravel: iconoReact("Laravel", SiLaravel),
   chartjs: iconoReact("Chart.js", SiChartdotjs),
   apache: iconoReact("Apache", SiApache),
   mysql: iconoReact("MySQL", SiMysql),
@@ -250,6 +252,89 @@ export type Project = {
  * Las capturas van en /assets/projects-screenshots/<id>/landing-v2.png
  */
 const projects: Project[] = [
+  {
+    id: "el-taller-ines",
+    category: "Aplicación web instalable",
+    title: "El-taller-ines — Taller de costura",
+    src: "/assets/projects-screenshots/el-taller-ines/landing-v2.png",
+    screenshots: ["landing-v2.png"],
+    skills: {
+      frontend: [SKILLS.php, SKILLS.js],
+      backend: [
+        SKILLS.laravel,
+        SKILLS.mysql,
+        SKILLS.docker,
+        SKILLS.nginx,
+        SKILLS.apache,
+      ],
+    },
+    live: "https://proyectosena.online/taller",
+    github: "https://github.com/Aryannext/El-taller-ines",
+    get content() {
+      return (
+        <div>
+          <TypographyP className="font-mono text-2xl text-center">
+            Las órdenes de un taller de costura dejan de vivir en un cuaderno y
+            en la memoria de la dueña.
+          </TypographyP>
+          <TypographyP className="font-mono">
+            Cada prenda entra con su arreglo, su precio y sus fotos, y queda
+            atada a un número que se escribe en la bolsa. Desde ahí el sistema
+            sabe en qué va cada prenda, cuándo se entregó, cuánto se abonó y
+            cuánto falta por cobrar. Está hecho para usarse con el celular en la
+            mano, entre medidas y máquinas.
+          </TypographyP>
+          <ProjectsLinks live={this.live} repo={this.github} />
+
+          <TypographyH3 className="my-4 mt-8">Primero la documentación</TypographyH3>
+          <p className="font-mono mb-2">
+            Es mi proyecto formativo del SENA, y lo rehíce desde cero para poder
+            sustentarlo: problema, requisitos, reglas de negocio, casos de uso,
+            modelo de datos, mockups y plan de pruebas antes de escribir la
+            primera línea. Cada regla tiene su número y cada historia sus
+            criterios; unos scripts en Python comprueban que el código y los
+            documentos sigan diciendo lo mismo.
+          </p>
+
+          <TypographyH3 className="my-4 mt-8">Cómo está armado</TypographyH3>
+          <p className="font-mono mb-2">
+            Laravel 13 sobre PHP 8.4 y MySQL 8.4, con el núcleo en PHP puro: las
+            reglas del taller no dependen del framework. Un caso de uso por
+            acción, los modelos solo representan tablas, y las interfaces de
+            WhatsApp, las fotos y el reloj se implementan aparte. Una prueba de
+            arquitectura falla si una capa toca la que no debe.
+          </p>
+
+          <TypographyH3 className="my-4 mt-8">Avisos que salen solos</TypographyH3>
+          <p className="font-mono mb-2">
+            Cuando la última prenda queda terminada, el sistema encola el aviso
+            de WhatsApp al cliente y la pantalla responde de inmediato. El envío
+            ocurre aparte, con tres reintentos y esperas crecientes; si la API no
+            está configurada o sigue fallando, el aviso queda listo para enviarlo
+            con un toque desde el WhatsApp de la dueña, con el saldo del momento.
+          </p>
+
+          <TypographyH3 className="my-4 mt-8">Multi-negocio y fotos privadas</TypographyH3>
+          <p className="font-mono mb-2">
+            Un filtro global ata cada dato a su negocio, y una prueba recorre
+            todas las rutas con datos ajenos para confirmar que responden como si
+            no existieran. Las fotos de las prendas se reducen en el navegador y
+            otra vez en el servidor, se guardan fuera de la carpeta pública y se
+            entregan por un controlador que exige sesión.
+          </p>
+
+          <TypographyH3 className="my-4 mt-8">Pruebas y despliegue</TypographyH3>
+          <p className="font-mono mb-2">
+            Más de cien pruebas automáticas con PHPUnit sobre MySQL real, además
+            de estilo, análisis estático y reglas de capas en un solo comando.
+            Corre en contenedores Docker con PHP 8.4, su propio MySQL y un
+            trabajador de cola que se reinicia solo, detrás del Nginx de este
+            mismo portafolio.
+          </p>
+        </div>
+      );
+    },
+  },
   {
     id: "sgpd-sena",
     category: "Plataforma web",
@@ -397,61 +482,6 @@ const projects: Project[] = [
             para no depender de lo que tenga instalado el servidor. Nginx sirve
             el frontend compilado. Pruebas con Jest y Supertest en el backend,
             Cypress en el navegador.
-          </p>
-        </div>
-      );
-    },
-  },
-  {
-    id: "costura-app",
-    category: "Aplicación móvil y web",
-    title: "Costura App (Atelier Manager)",
-    src: "/assets/projects-screenshots/costura-app/landing-v2.png",
-    screenshots: ["landing-v2.png"],
-    skills: {
-      frontend: [SKILLS.vue, SKILLS.vite, SKILLS.js],
-      backend: [
-        SKILLS.capacitor,
-        SKILLS.sqlite,
-        SKILLS.android,
-        SKILLS.github,
-      ],
-    },
-    live: "https://proyectosena.online/costura",
-    github: "https://github.com/Aryannext/Costura-app",
-    get content() {
-      return (
-        <div>
-          <TypographyP className="font-mono text-2xl text-center">
-            Gestión de pedidos y medidas para un taller de costura, en el celular
-            y en la web.
-          </TypographyP>
-          <TypographyP className="font-mono">
-            Vue 3 con Vite, empaquetado a Android con Capacitor 8. La idea era
-            que una modista pudiera registrar pedidos y medidas en el taller
-            aunque no tuviera internet, y que al reconectar todo subiera solo.
-          </TypographyP>
-          <ProjectsLinks live={this.live} repo={this.github} />
-
-          <TypographyH3 className="my-4 mt-8">Primero sin conexión</TypographyH3>
-          <p className="font-mono mb-2">
-            Los datos viven en SQLite nativo dentro del dispositivo, con el
-            plugin de la comunidad de Capacitor. La app funciona completa sin
-            señal; la sincronización ocurre después.
-          </p>
-
-          <TypographyH3 className="my-4 mt-8">Detalles que aprendí</TypographyH3>
-          <p className="font-mono mb-2">
-            Contraseñas cifradas con bcrypt, gráficas con Chart.js, y un tour
-            guiado con driver.js para que la usuaria no se pierda la primera vez.
-            Las actualizaciones llegan por aire con Capacitor Updater, sin
-            reinstalar la app.
-          </p>
-
-          <TypographyH3 className="my-4 mt-8">Pruebas y despliegue</TypographyH3>
-          <p className="font-mono mb-2">
-            Vitest y Vue Test Utils para las unidades, Playwright para el flujo
-            completo, y GitHub Actions ejecutándolo todo en cada push.
           </p>
         </div>
       );
