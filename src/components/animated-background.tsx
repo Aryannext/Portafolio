@@ -38,6 +38,8 @@ const KeyboardScene = ({ maxDpr }: { maxDpr: number }) => {
   const keycapAnimationsRef = useRef<{ start: () => void; stop: () => void }>(null);
 
   const [keyboardRevealed, setKeyboardRevealed] = useState(false);
+  /** La instancia de Spline que está viva ahora mismo (ver `onLoad`). */
+  const instanciaVivaRef = useRef<Application | null>(null);
 
   // --- Event Handlers ---
 
@@ -270,8 +272,14 @@ const KeyboardScene = ({ maxDpr }: { maxDpr: number }) => {
     const kbd = splineApp.findObjectByName("keyboard");
     if (!kbd) return;
 
+    // El revelado dura unos tres segundos entre esperas. Si en medio se sale de
+    // la página y vuelve, Spline ya montó otra escena y esta quedó tirada:
+    // seguir escribiéndole no se ve, pero enmascara errores.
+    const sigueVigente = () => instanciaVivaRef.current === splineApp;
+
     kbd.visible = false;
     await sleep(400);
+    if (!sigueVigente()) return;
     kbd.visible = true;
     setKeyboardRevealed(true);
 
@@ -290,6 +298,7 @@ const KeyboardScene = ({ maxDpr }: { maxDpr: number }) => {
     const keycaps = allObjects.filter((obj) => obj.name === "keycap");
 
     await sleep(900);
+    if (!sigueVigente()) return;
 
     aplicarVarianteDeTeclas(false);
 
@@ -551,6 +560,17 @@ const KeyboardScene = ({ maxDpr }: { maxDpr: number }) => {
         ref={splineContainer}
         onLoad={(app: Application) => {
           setSplineApp(app);
+          instanciaVivaRef.current = app;
+          // Volver desde /resume desmonta este componente y lo vuelve a montar,
+          // pero React le conserva el estado: `keyboardRevealed` regresaba en
+          // `true` de la visita anterior. Spline, en cambio, sí monta una escena
+          // nueva, y en la escena TODAS las teclas vienen ocultas: solo las
+          // enciende updateKeyboardTransform. Con la marca heredada el revelado
+          // se saltaba y quedaba la base sin teclas.
+          //
+          // La marca pertenece a la instancia, no al componente: instancia
+          // nueva, revelado nuevo.
+          setKeyboardRevealed(false);
           bypassLoading();
         }}
         // El nombre lleva versión a propósito: /assets/* se sirve con
