@@ -74,9 +74,16 @@ export async function POST(req: Request) {
     }
 
     const { data: resendData, error: resendError } = await resend.emails.send({
+      // `onboarding@resend.dev` es el remitente compartido de Resend, y solo
+      // deja enviar a la dirección con la que se registró la cuenta. Si
+      // config.email es otra, Resend rechaza CADA envío. Para usar un remitente
+      // propio hay que verificar un dominio en Resend y cambiar este `from`.
       from: "Portafolio <onboarding@resend.dev>",
       to: [config.email],
-      subject: "Contacto desde el portafolio",
+      // Sin esto, responder desde el cliente de correo contesta al remitente
+      // técnico y no a la persona que escribió.
+      replyTo: zodData.email,
+      subject: `Contacto desde el portafolio — ${zodData.fullName}`,
       react: EmailTemplate({
         fullName: zodData.fullName,
         email: zodData.email,
@@ -85,14 +92,36 @@ export async function POST(req: Request) {
     });
 
     if (resendError) {
+      // Queda en el registro del servidor para poder diagnosticarlo. No se
+      // registra ni la clave ni el contenido del mensaje del visitante.
+      console.error("[/api/send] Resend rechazó el envío:", {
+        nombre: resendError.name,
+        detalle: resendError.message,
+      });
       return Response.json(
-        { error: "No se pudo enviar el correo." },
+        {
+          error:
+            "El correo no salió. Escríbeme directo a " +
+            config.email +
+            " y te respondo igual.",
+        },
         { status: 500 },
       );
     }
 
     return Response.json(resendData);
   } catch (error) {
-    return Response.json({ error }, { status: 500 });
+    // `Response.json({ error })` con un Error dentro serializa a {}, así que el
+    // cliente recibía un cuerpo vacío y no podía decir nada útil.
+    console.error("[/api/send] Excepción no prevista:", error);
+    return Response.json(
+      {
+        error:
+          "El correo no salió. Escríbeme directo a " +
+          config.email +
+          " y te respondo igual.",
+      },
+      { status: 500 },
+    );
   }
 }

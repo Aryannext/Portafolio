@@ -9,11 +9,12 @@ import { useToast } from "./ui/use-toast";
 import { Button } from "./ui/button";
 import { useRouter } from "next/navigation";
 import { z } from "zod";
+import { config } from "@/data/config";
 
 const formSchema = z.object({
-  fullName: z.string().min(2, "Full name must be at least 2 characters"),
-  email: z.string().email("Please enter a valid email address"),
-  message: z.string().min(10, "Message must be at least 10 characters"),
+  fullName: z.string().min(2, "Escribe tu nombre completo."),
+  email: z.string().email("Ese correo no parece válido."),
+  message: z.string().min(10, "Cuéntame un poco más: al menos 10 caracteres."),
 });
 
 type FieldErrors = Partial<Record<keyof z.infer<typeof formSchema>, string>>;
@@ -69,9 +70,18 @@ const ContactForm = () => {
         clearTimeout(timer);
       }, 1000);
     } catch (err) {
+      // El motivo viene de /api/send y está escrito para leerse: que falta la
+      // configuración del correo, que se superó el límite de intentos, o que
+      // falló el proveedor. Antes se descartaba y siempre salía "Algo salió
+      // mal", así que el visitante no podía distinguir un límite temporal —que
+      // se resuelve esperando un minuto— de un correo que no va a salir nunca.
+      //
+      // El texto escrito no se borra: solo se limpia cuando el envío sale bien.
+      const motivo = err instanceof Error && err.message ? err.message : null;
       toast({
-        title: "Ups",
-        description: "Algo salió mal. Inténtalo de nuevo.",
+        title: "No se pudo enviar",
+        description:
+          motivo ?? `Algo salió mal. Escríbeme directo a ${config.email}.`,
         className: cn(
           "top-0 w-full flex justify-center fixed md:max-w-7xl md:top-4 md:right-4"
         ),
