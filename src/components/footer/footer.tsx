@@ -23,28 +23,7 @@ function Footer() {
           </Suspense>{" "}
           {config.author}. Todos los derechos reservados.
         </p>
-        {/* Crédito al autor de la plantilla base: lo pide en su README. Ver CREDITS.md */}
-        <p className="text-xs text-gray-500 dark:text-gray-400">
-          Construido sobre{" "}
-          <Link
-            href="https://github.com/Naresh-Khatri/3d-portfolio"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline underline-offset-4 hover:text-foreground"
-          >
-            3d-portfolio
-          </Link>{" "}
-          de{" "}
-          <Link
-            href="https://github.com/Naresh-Khatri"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline underline-offset-4 hover:text-foreground"
-          >
-            Naresh Khatri
-          </Link>
-          .
-        </p>
+        {/* El crédito a la plantilla base vive en CREDITS.md, no en el pie. */}
       </div>
       <SocialMediaButtons />
       <nav className="flex gap-4 sm:gap-6 z-10">

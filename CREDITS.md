@@ -15,7 +15,9 @@ El README original dice, textualmente:
 > If you use this portfolio, a credit or link back to the original repo would be
 > much appreciated ❤️
 
-Este archivo y el enlace en el pie de página del sitio son ese crédito.
+Este archivo es ese crédito. (Hubo también un enlace en el pie de página del
+sitio; se quitó porque ni la licencia MIT ni el autor lo exigen, solo lo
+agradecen.)
 
 > **Nota sobre la licencia:** el README enlaza a un archivo `LICENSE` que **no
 > existe** en el repositorio, y `package.json` no declara licencia. La intención
