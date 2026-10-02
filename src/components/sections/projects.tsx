@@ -21,7 +21,13 @@ import ScrollingPreview from "../scrolling-preview";
 const ProjectsSection = () => {
   return (
     <SectionWrapper id="projects" className="max-w-7xl mx-auto md:min-h-[130vh] px-4">
-      <SectionHeader id="projects" title="Proyectos" />
+      {/* El hueco de mb-96 y el sticky son para dar sitio al teclado 3D en
+          escritorio; en teléfono no hay teclado y dejaban 384px en blanco. */}
+      <SectionHeader
+        id="projects"
+        title="Proyectos"
+        className="static md:sticky mb-10 md:mb-96"
+      />
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {projects.map((project) => (
           <ProjectCard key={project.id} project={project} />
@@ -62,9 +68,9 @@ const ProjectCard = ({ project }: { project: Project }) => {
 
         <ResponsiveDialogContent className="md:max-w-4xl md:h-[85vh] md:!flex md:flex-col md:overflow-hidden md:p-0 md:gap-0">
           {/* Sticky header */}
-          <div className="shrink-0 border-b border-border bg-background/80 backdrop-blur-sm px-8 py-5">
-            <div className="flex items-center justify-between gap-4">
-              <div className="flex items-center gap-4 min-w-0">
+          <div className="shrink-0 border-b border-border bg-background/80 backdrop-blur-sm px-4 py-4 md:px-8 md:py-5">
+            <div className="flex flex-col items-start gap-3 md:flex-row md:items-center md:justify-between md:gap-4">
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 min-w-0 max-w-full">
                 <ResponsiveDialogTitle className="font-display text-xl md:text-2xl font-bold text-foreground tracking-tight truncate">
                   {project.title}
                 </ResponsiveDialogTitle>
@@ -96,7 +102,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
 
           {/* Scrollable content */}
           <ScrollArea className="flex-1" type="always" data-lenis-prevent>
-            <div className="px-8 py-8">
+            <div className="px-4 py-6 md:px-8 md:py-8">
               {/* Tech stack */}
               <motion.div
                 initial={{ opacity: 0, y: 12 }}

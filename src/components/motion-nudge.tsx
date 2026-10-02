@@ -16,7 +16,7 @@ const DISMISS_KEY = "portfolio:motion-nudge-dismissed";
  * low-end hardware, where enabling wouldn't bring the scene back).
  */
 export default function MotionNudge() {
-  const { ready, rawReducedMotion, motionEnabled, lowEnd } = usePerfProfile();
+  const { ready, rawReducedMotion, motionEnabled, lowEnd, isMobile } = usePerfProfile();
   const [dismissed, setDismissed] = React.useState(true);
 
   React.useEffect(() => {
@@ -36,7 +36,9 @@ export default function MotionNudge() {
     }
   };
 
-  if (!ready || !rawReducedMotion || motionEnabled || lowEnd || dismissed) {
+  // En teléfonos el 3D está apagado siempre (ver disable3D en use-perf-profile),
+  // así que "Activar 3D" no haría nada y el aviso solo taparía contenido.
+  if (!ready || isMobile || !rawReducedMotion || motionEnabled || lowEnd || dismissed) {
     return null;
   }
 
