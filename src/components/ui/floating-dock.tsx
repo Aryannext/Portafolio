@@ -11,6 +11,7 @@ import {
   motion,
   useAnimation,
   useMotionValue,
+  useMotionValueEvent,
   useSpring,
   useTransform,
 } from "motion/react";
@@ -115,14 +116,27 @@ const FloatingDockDesktop = ({
   }, [showHint]);
   return (
     <div className="relative h-fit flex items-center justify-center pointer-events-auto">
+      {/* Eventos de puntero (no de ratón) para que también responda al dedo.
+          touch-action: pan-y deja el scroll vertical al navegador y nos da el
+          deslizamiento horizontal; data-vaul-no-drag evita que ese gesto
+          arrastre el cajón del proyecto en el teléfono. */}
       <motion.div
-        onMouseMove={(e) => {
-          mouseX.set(e.pageX);
+        data-vaul-no-drag
+        onPointerMove={(e) => {
+          mouseX.set(e.clientX);
           setShowHint(false);
         }}
-        onMouseLeave={() => mouseX.set(Infinity)}
+        onPointerDown={(e) => {
+          mouseX.set(e.clientX);
+          setShowHint(false);
+        }}
+        onPointerLeave={() => mouseX.set(Infinity)}
+        onPointerUp={(e) => {
+          if (e.pointerType !== "mouse") mouseX.set(Infinity);
+        }}
+        onPointerCancel={() => mouseX.set(Infinity)}
         className={cn(
-          "flex gap-2 md:gap-4",
+          "flex gap-2 md:gap-4 touch-pan-y select-none",
           "mx-auto h-16 items-end  rounded-2xl bg-white/30 dark:bg-black/50  px-4 pb-3",
           className
         )}
@@ -203,14 +217,20 @@ function IconContainer({
     damping: 12,
   });
 
+  // La etiqueta sale cuando el puntero está sobre este icono, calculado por
+  // posición y no con onMouseEnter: con el dedo, el navegador manda todos los
+  // eventos al icono donde empezó el toque, así que los demás nunca se enteran.
   const [hovered, setHovered] = useState(false);
+  useMotionValueEvent(mouseX, "change", (val) => {
+    const bounds = ref.current?.getBoundingClientRect();
+    const encima = !!bounds && val >= bounds.left && val <= bounds.right;
+    setHovered((prev) => (prev === encima ? prev : encima));
+  });
 
   return (
     <motion.div
       ref={ref}
       style={{ width, height }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
       className="aspect-square rounded-full bg-secondary/30 flex items-center justify-center relative"
     >
       <AnimatePresence>
