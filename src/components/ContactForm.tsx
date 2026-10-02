@@ -7,7 +7,6 @@ import { Textarea } from "./ui/ace-textarea";
 import { cn } from "@/lib/utils";
 import { useToast } from "./ui/use-toast";
 import { Button } from "./ui/button";
-import { useRouter } from "next/navigation";
 import { z } from "zod";
 import { config } from "@/data/config";
 
@@ -27,7 +26,6 @@ const ContactForm = () => {
   const [errors, setErrors] = React.useState<FieldErrors>({});
 
   const { toast } = useToast();
-  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -61,14 +59,13 @@ const ContactForm = () => {
         variant: "default",
         className: cn("top-0 mx-auto flex fixed md:top-4 md:right-4"),
       });
+      // Sin redirección: antes se hacía router.push("/") al segundo, y en el
+      // teléfono eso sacaba al visitante de la sección de contacto de golpe.
+      // Se queda donde está, con el aviso de "¡Gracias!" a la vista.
       setLoading(false);
       setFullName("");
       setEmail("");
       setMessage("");
-      const timer = setTimeout(() => {
-        router.push("/");
-        clearTimeout(timer);
-      }, 1000);
     } catch (err) {
       // El motivo viene de /api/send y está escrito para leerse: que falta la
       // configuración del correo, que se superó el límite de intentos, o que
