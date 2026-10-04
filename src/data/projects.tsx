@@ -504,7 +504,7 @@ const projects: Project[] = [
         SKILLS.sqlite,
       ],
     },
-    live: "#",
+    live: "https://proyectosena.online/sincronizacion/",
     github: "https://github.com/Aryannext/Sincronizaci-n-Web---app-Nativa",
     get content() {
       return (
@@ -540,6 +540,24 @@ const projects: Project[] = [
             Room sobre SQLite guarda todo localmente, y WorkManager se encarga de
             sincronizar en segundo plano cuando el sistema lo permite — sin
             drenar la batería ni exigir que la app esté abierta.
+          </p>
+          <p className="font-mono mb-2">
+            La app firmada se descarga aquí:{" "}
+            <a
+              className="underline"
+              href="https://proyectosena.online/sincronizacion/descargas/syncpulse.apk"
+            >
+              SyncPulse para Android (APK)
+            </a>
+            .
+          </p>
+
+          <TypographyH3 className="my-4 mt-8">Cómo corre</TypographyH3>
+          <p className="font-mono mb-2">
+            Tres contenedores en Docker Compose: PostgreSQL propio, la API en
+            Node y un Nginx que sirve el panel compilado. Solo ese último
+            escucha, y solo para el Nginx del servidor, que lo publica por
+            HTTPS; la API y la base no se alcanzan desde fuera.
           </p>
         </div>
       );
