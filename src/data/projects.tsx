@@ -549,7 +549,6 @@ const projects: Project[] = [
             >
               SyncPulse para Android (APK)
             </a>
-            .
           </p>
 
           <TypographyH3 className="my-4 mt-8">Cómo corre</TypographyH3>
