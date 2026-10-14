@@ -253,83 +253,73 @@ export type Project = {
  */
 const projects: Project[] = [
   {
-    id: "el-taller-ines",
-    category: "Aplicación web instalable",
-    title: "El-taller-ines — Taller de costura",
-    src: "/assets/projects-screenshots/el-taller-ines/landing-v2.png",
+    id: "costura-app",
+    category: "Aplicación móvil híbrida",
+    title: "Costura App — Atelier Manager",
+    src: "/assets/projects-screenshots/costura-app/landing-v2.png",
     screenshots: ["landing-v2.png"],
     skills: {
-      frontend: [SKILLS.php, SKILLS.js],
+      frontend: [SKILLS.vue, SKILLS.js, SKILLS.vite, SKILLS.chartjs],
       backend: [
-        SKILLS.laravel,
-        SKILLS.mysql,
+        SKILLS.capacitor,
+        SKILLS.android,
+        SKILLS.sqlite,
         SKILLS.docker,
         SKILLS.nginx,
-        SKILLS.apache,
+        SKILLS.github,
       ],
     },
-    live: "https://proyectosena.online/taller",
-    github: "https://github.com/Aryannext/El-taller-ines",
+    live: "https://proyectosena.online/costura-app/",
+    github: "https://github.com/Aryannext/Costura-app",
     get content() {
       return (
         <div>
           <TypographyP className="font-mono text-2xl text-center">
-            Las órdenes de un taller de costura dejan de vivir en un cuaderno y
-            en la memoria de la dueña.
+            El cuaderno de un taller de costura, metido en el celular de la
+            dueña y sin depender de internet.
           </TypographyP>
           <TypographyP className="font-mono">
-            Cada prenda entra con su arreglo, su precio y sus fotos, y queda
-            atada a un número que se escribe en la bolsa. Desde ahí el sistema
-            sabe en qué va cada prenda, cuándo se entregó, cuánto se abonó y
-            cuánto falta por cobrar. Está hecho para usarse con el celular en la
-            mano, entre medidas y máquinas.
+            Cada orden reúne a la clienta, sus prendas, los abonos y la fecha
+            prometida. La orden avanza sola según sus prendas, el saldo se
+            calcula en la base y no a mano, y el aviso de que la ropa está lista
+            sale por WhatsApp con un toque. Es mi proyecto formativo del SENA,
+            hecho para el taller de una modista de verdad.
           </TypographyP>
           <ProjectsLinks live={this.live} repo={this.github} />
 
-          <TypographyH3 className="my-4 mt-8">Primero la documentación</TypographyH3>
+          <TypographyH3 className="my-4 mt-8">Offline primero</TypographyH3>
           <p className="font-mono mb-2">
-            Es mi proyecto formativo del SENA, y lo rehíce desde cero para poder
-            sustentarlo: problema, requisitos, reglas de negocio, casos de uso,
-            modelo de datos, mockups y plan de pruebas antes de escribir la
-            primera línea. Cada regla tiene su número y cada historia sus
-            criterios; unos scripts en Python comprueban que el código y los
-            documentos sigan diciendo lo mismo.
+            Vue 3 empaquetado como APK con Capacitor. En el teléfono los datos
+            viven en SQLite; en el navegador, en SQLite sobre IndexedDB. Nada
+            depende de un servidor: internet solo hace falta para WhatsApp y
+            para el bot de Telegram que le manda a la dueña recordatorios,
+            recibos y copias de seguridad.
           </p>
 
-          <TypographyH3 className="my-4 mt-8">Cómo está armado</TypographyH3>
+          <TypographyH3 className="my-4 mt-8">Reglas que se pueden probar</TypographyH3>
           <p className="font-mono mb-2">
-            Laravel 13 sobre PHP 8.4 y MySQL 8.4, con el núcleo en PHP puro: las
-            reglas del taller no dependen del framework. Un caso de uso por
-            acción, los modelos solo representan tablas, y las interfaces de
-            WhatsApp, las fotos y el reloj se implementan aparte. Una prueba de
-            arquitectura falla si una capa toca la que no debe.
+            Las 40 reglas de negocio del SRS tienen cada una su bloque de
+            pruebas, y una prueba falla si alguna regla queda sin probar. Las
+            pruebas de saldo, estados, pagos y migraciones corren contra SQLite
+            real con sql.js, no contra simulaciones; así aparecieron errores que
+            un mock dejaba pasar. Más de 380 pruebas con Vitest, flujos completos
+            con Playwright y SonarCloud en cada cambio.
           </p>
 
-          <TypographyH3 className="my-4 mt-8">Avisos que salen solos</TypographyH3>
+          <TypographyH3 className="my-4 mt-8">Datos de clientas</TypographyH3>
           <p className="font-mono mb-2">
-            Cuando la última prenda queda terminada, el sistema encola el aviso
-            de WhatsApp al cliente y la pantalla responde de inmediato. El envío
-            ocurre aparte, con tres reintentos y esperas crecientes; si la API no
-            está configurada o sigue fallando, el aviso queda listo para enviarlo
-            con un toque desde el WhatsApp de la dueña, con el saldo del momento.
+            Ninguna clienta se registra sin su autorización (Ley 1581), y la
+            app guarda la fecha y la versión del aviso que aceptó. La entrada se
+            protege con clave o huella, la app se bloquea al pasar a segundo
+            plano y la copia de seguridad va cifrada con AES-256-GCM.
           </p>
 
-          <TypographyH3 className="my-4 mt-8">Multi-negocio y fotos privadas</TypographyH3>
+          <TypographyH3 className="my-4 mt-8">Cómo se publica</TypographyH3>
           <p className="font-mono mb-2">
-            Un filtro global ata cada dato a su negocio, y una prueba recorre
-            todas las rutas con datos ajenos para confirmar que responden como si
-            no existieran. Las fotos de las prendas se reducen en el navegador y
-            otra vez en el servidor, se guardan fuera de la carpeta pública y se
-            entregan por un controlador que exige sesión.
-          </p>
-
-          <TypographyH3 className="my-4 mt-8">Pruebas y despliegue</TypographyH3>
-          <p className="font-mono mb-2">
-            Más de cien pruebas automáticas con PHPUnit sobre MySQL real, además
-            de estilo, análisis estático y reglas de capas en un solo comando.
-            Corre en contenedores Docker con PHP 8.4, su propio MySQL y un
-            trabajador de cola que se reinicia solo, detrás del Nginx de este
-            mismo portafolio.
+            El APK se instala en el teléfono del taller. La versión web es la
+            misma app servida por un Nginx sin privilegios en Docker, detrás del
+            Nginx de este portafolio. Es una demostración: cada navegador guarda
+            su propia base y nada de lo que se registre ahí llega al teléfono.
           </p>
         </div>
       );
