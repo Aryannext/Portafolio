@@ -481,8 +481,8 @@ const projects: Project[] = [
     id: "sincronizacion-nativa",
     category: "Arquitectura",
     title: "Sincronización Web / App nativa",
-    src: "/assets/projects-screenshots/sincronizacion-nativa/landing-v2.png",
-    screenshots: ["landing-v2.png"],
+    src: "/assets/projects-screenshots/sincronizacion-nativa/landing-v3.png",
+    screenshots: ["landing-v3.png"],
     skills: {
       frontend: [SKILLS.react, SKILLS.vite],
       backend: [
